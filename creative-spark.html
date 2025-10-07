@@ -3,24 +3,20 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Creative Spark v3.3 — Sovereign Classroom Edition</title>
+<title>Creative Spark v3.4 — Sovereign Classroom Edition</title>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 <style>
-:root {
-  --bg-black: #000;
-  --sunset: #ff6e3a;
-  --accent: #ff8a59;
-  --muted-white: rgba(255, 255, 255, 0.92);
-  --radius: 16px;
-  --font: "Poppins", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+:root{
+ --bg-black:#000;--sunset:#ff6e3a;--accent:#ff8a59;--muted-white:rgba(255,255,255,.92);
+ --radius:16px;--font:"Poppins",system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial;
 }
 *{box-sizing:border-box}
 body{margin:0;background:var(--bg-black);color:var(--muted-white);font-family:var(--font);overflow-x:hidden;font-size:22px}
 .app{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:40px 20px;position:relative;overflow:hidden}
-.bg-art{position:absolute;inset:0;background:url('https://via.placeholder.com/1600x900/000/111?text=Creative+Spark') center/cover no-repeat;opacity:.08;filter:blur(3px);pointer-events:none;z-index:0}
+.bg-art{position:absolute;inset:0;opacity:.08;filter:blur(3px);pointer-events:none;z-index:0}
 .frame{z-index:10;width:100%;max-width:980px;display:flex;flex-direction:column;align-items:center;gap:32px}
 .home{text-align:center;padding:28px}
-.title{font-size:clamp(40px,6vw,56px);font-weight:800;letter-spacing:-.01em;text-shadow:0 0 24px rgba(255,110,58,.3)}
+.title{font-size:clamp(40px,6vw,56px);font-weight:800;text-shadow:0 0 24px rgba(255,110,58,.3)}
 .tagline{font-size:clamp(22px,2.5vw,26px);opacity:.9;margin-top:12px;animation:fadeShimmer 5s infinite ease-in-out}
 @keyframes fadeShimmer{0%,100%{opacity:.6}50%{opacity:1}}
 .begin-btn{margin-top:30px;border:none;background:linear-gradient(180deg,var(--sunset),var(--accent));color:#fff;
@@ -37,11 +33,12 @@ background:transparent;color:var(--muted-white);outline:none;min-height:60px;wid
 input:focus,select:focus{border-color:var(--accent)}
 .inputs{display:grid;gap:18px}
 .generate-row{display:flex;gap:14px;align-items:center;flex-wrap:wrap}
+button{cursor:pointer}
 button.generate-btn,button.next-btn{background:linear-gradient(180deg,var(--sunset),var(--accent));color:white;
-padding:18px 32px;border:none;border-radius:16px;font-weight:700;font-size:24px;cursor:pointer}
+padding:18px 32px;border:none;border-radius:16px;font-weight:700;font-size:22px}
 button.next-btn{background:#333;border:1px solid rgba(255,255,255,.2)}
 .clear-btn{background:transparent;color:rgba(255,255,255,.7);border:1px solid rgba(255,255,255,.1);
-padding:14px 20px;border-radius:14px;font-size:20px;cursor:pointer}
+padding:14px 20px;border-radius:14px;font-size:20px}
 .results{margin-top:16px;display:grid;gap:22px}
 .card{background:linear-gradient(180deg,rgba(255,255,255,.02),rgba(255,255,255,.01));
 border-radius:22px;padding:30px;display:flex;flex-direction:column;gap:18px;
@@ -49,175 +46,168 @@ border:1px solid rgba(255,255,255,.05);box-shadow:0 8px 34px rgba(0,0,0,.7);anim
 @keyframes fadeIn{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
 .card h4{margin:0;font-size:28px;font-weight:700}
 .card p{margin:0;font-size:24px;line-height:1.5}
-.color-bar{display:flex;margin-top:10px;border-radius:10px;overflow-x:auto;height:32px}
-.color-swatch{flex:0 0 60px;height:100%;cursor:grab;border-right:2px solid rgba(0,0,0,.1)}
+.card canvas{border-radius:12px}
+.actions-row{display:flex;gap:14px;flex-wrap:wrap}
+.gallery{margin-top:30px;display:flex;flex-wrap:wrap;gap:12px;justify-content:center}
+.gallery img{width:120px;height:90px;object-fit:cover;border-radius:8px;border:1px solid rgba(255,255,255,.2)}
 .toast{position:fixed;bottom:30px;left:50%;transform:translateX(-50%);
 background:rgba(0,0,0,.85);color:#fff;padding:16px 26px;border-radius:10px;
 font-size:20px;opacity:0;pointer-events:none;transition:opacity .4s}
 .toast.show{opacity:1}
 .access-toggle{position:fixed;bottom:18px;right:18px;z-index:40;background:#222;
-color:#fff;border:1px solid rgba(255,255,255,.2);border-radius:12px;padding:12px 16px;cursor:pointer}
-.high-contrast body{background:#fff;color:#000}
+color:#fff;border:1px solid rgba(255,255,255,.2);border-radius:12px;padding:12px 16px}
 </style>
 </head>
 <body>
 <div class="app">
-  <div class="bg-art"></div>
-  <div class="frame">
-    <section id="home" class="home">
-      <div class="title">Creative Spark</div>
-      <div class="tagline">Every story begins with a spark.</div>
-      <button id="beginBtn" class="begin-btn">Begin</button>
-      <div class="footer-note">Designed by Archaemenes Academy 2025</div>
-    </section>
+<div class="bg-art"></div>
+<div class="frame">
+<section id="home" class="home">
+ <div class="title">Creative Spark</div>
+ <div class="tagline">Every story begins with a spark.</div>
+ <button id="beginBtn" class="begin-btn">Begin</button>
+ <div class="footer-note">Designed by Archaemenes Academy 2025</div>
+</section>
 
-    <section id="generator" class="generator">
-      <div class="inputs">
-        <label>Theme / Concept <input type="text" id="theme" placeholder="e.g. western"></label>
-        <label>Emotion / Mood <input type="text" id="emotion" placeholder="e.g. nostalgic"></label>
-        <label>Object / Symbol <input type="text" id="object" placeholder="e.g. fences"></label>
-        <label>Three Favorites (comma-separated)
-          <input type="text" id="favorites" placeholder="e.g. horses, sunsets, dogs">
-        </label>
-        <label>Artistic Style
-          <select id="style">
-            <option value="">Random / Any</option>
-            <option value="surreal">Surreal</option>
-            <option value="realistic">Realistic</option>
-            <option value="cartoony">Cartoony</option>
-            <option value="impressionistic">Impressionistic</option>
-            <option value="minimalist">Minimalist</option>
-            <option value="abstract">Abstract</option>
-            <option value="fantasy">Fantasy / Concept Art</option>
-          </select>
-        </label>
-      </div>
+<section id="generator" class="generator">
+ <div class="inputs">
+   <label>Theme / Concept <input type="text" id="theme" placeholder="e.g. western"></label>
+   <label>Emotion / Mood <input type="text" id="emotion" placeholder="e.g. nostalgic"></label>
+   <label>Object / Symbol <input type="text" id="object" placeholder="e.g. fences"></label>
+   <label>Three Favorites (comma-separated)
+     <input type="text" id="favorites" placeholder="e.g. horses, sunsets, dogs">
+   </label>
+   <label>Artistic Style
+     <select id="style">
+       <option value="">Random / Any</option>
+       <option value="surreal">Surreal</option>
+       <option value="realistic">Realistic</option>
+       <option value="cartoony">Cartoony</option>
+       <option value="impressionistic">Impressionistic</option>
+       <option value="minimalist">Minimalist</option>
+       <option value="abstract">Abstract</option>
+       <option value="fantasy">Fantasy / Concept Art</option>
+     </select>
+   </label>
+ </div>
 
-      <div class="generate-row">
-        <button id="generateBtn" class="generate-btn">Generate Spark</button>
-        <button id="nextBtn" class="next-btn" style="display:none;">Next Spark ↻</button>
-        <button id="clearBtn" class="clear-btn">Clear</button>
-      </div>
+ <div class="generate-row">
+   <button id="generateBtn" class="generate-btn">Generate Spark</button>
+   <button id="nextBtn" class="next-btn" style="display:none;">Next Spark ↻</button>
+   <button id="clearBtn" class="clear-btn">Clear</button>
+ </div>
 
-      <div id="results" class="results"></div>
-    </section>
-  </div>
+ <div id="results" class="results"></div>
+ <div id="gallery" class="gallery"></div>
+</section>
+</div>
 </div>
 
 <div class="toast" id="toast"></div>
 <button class="access-toggle" id="accessBtn">High Contrast ⇄</button>
 
-<script type="module">
-import { cleanSentence } from "./language-helper.js";
-
-/* ---------- Base Data ---------- */
-const colorPalettes = [
-  {name:"Sunset Serenity",colors:["#FF6E3A","#FF8A59","#FFD1A4","#FFE1C6","#2C1B17"]},
-  {name:"Forest Whisper",colors:["#2E4E1F","#6B8E23","#A9C985","#D4EAC7","#E5F3DB"]},
-  {name:"Dreamy Pastels",colors:["#FADADD","#FFD9E8","#C9E4FF","#E2FFE2","#FFF0B3"]},
-  {name:"Ocean Depths",colors:["#012E40","#027368","#038C73","#A9D9D0","#F2E7DC"]}
-];
-const personalities = [
-  {name:"Playful",adjectives:["whimsical","sparkling","curious","bright","breezy"],verbs:["frolics","dances","giggles","twirls","bounces"],connector:"Imagine"},
-  {name:"Reflective",adjectives:["gentle","dreamy","soft","serene","melancholy"],verbs:["whispers","lingers","radiates","floats","wanders"],connector:"A moment where"},
-  {name:"Bold",adjectives:["vivid","striking","dynamic","energetic","daring"],verbs:["blazes","shines","leaps","roars","pulses"],connector:"Behold"}
-];
-const mediums=["oil painting","watercolor","digital illustration","vector art","poem","sketch","collage","short story"];
-const DEFAULT_DICT=["sunsets","fences","peace","horses","dogs","rivers","mountains","flowers","trees","boats"];
-const randomChoice=a=>a[Math.floor(Math.random()*a.length)];
+<script>
+/* ---------- Base ---------- */
+const palettes=[{colors:["#FF6E3A","#FF8A59","#FFD1A4","#FFE1C6","#2C1B17"]},
+{colors:["#FADADD","#FFD9E8","#C9E4FF","#E2FFE2","#FFF0B3"]},
+{colors:["#012E40","#027368","#038C73","#A9D9D0","#F2E7DC"]}];
+const personalities=[{connector:"Imagine",adjectives:["whimsical","sparkling","curious"],verbs:["frolics","dances","twirls"]},
+{connector:"A moment where",adjectives:["gentle","dreamy","serene"],verbs:["whispers","lingers","floats"]},
+{connector:"Behold",adjectives:["vivid","dynamic","daring"],verbs:["blazes","shines","roars"]}];
+const mediums=["oil painting","watercolor","digital illustration","poem","sketch","collage"];
+const dict=["sunsets","fences","peace","horses","dogs","rivers","mountains","flowers","trees","boats"];
+const rand=a=>a[Math.floor(Math.random()*a.length)];
 const v=id=>document.getElementById(id).value.trim();
-function toast(msg){const t=document.getElementById('toast');t.textContent=msg;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),2600);}
+const toast=t=>{const el=document.getElementById("toast");el.textContent=t;el.classList.add("show");setTimeout(()=>el.classList.remove("show"),2500);};
 
-/* ---------- Micro Rewriter ---------- */
-function refineLine(line){
-  let text=line;
-  text=text.replace(/a (\w+)\s+(\w+)\s+in\s+(\w+)/gi,(m,noun,adj,emo)=>`a ${adj} ${noun} filled with ${emo}`);
-  text=text.replace(/beneath boats/gi,"beneath the drifting sky");
-  text=text.replace(/beneath trees/gi,"beneath their whispering leaves");
-  text=text.replace(/beneath hearts?/gi,"within the heart’s quiet space");
-  text=text.replace(/\bcalm in calm\b/gi,"still and serene");
-  text=text.replace(/\bhappy\b/gi,"happiness");
-  text=text.replace(/\blove gentle\b/gi,"gentle love");
-  text=text.replace(/\s{2,}/g," ");
-
-  // --- your enhancement for natural medium phrasing ---
-  text=text.replace(/into (an|a)? ?(\w+ )?(oil painting|watercolor|digital illustration|vector art|poem|sketch|collage|short story|composition) rendered in (\w+)/gi,
-    (m,artA,prefix,medium,style)=>`into a ${style.toLowerCase()} ${medium}`);
-  text=text.replace(/into realistic/gi,"into a realistic");
-  text=text.replace(/into (oil painting|watercolor|digital illustration|poem|collage|sketch|short story)/gi,
-    (m,med)=>`into a ${med}`);
-
-  text=text.charAt(0).toUpperCase()+text.slice(1);
-  if(!/[.!?]$/.test(text))text+=".";
-  return text;
+/* ---------- Grammar Refiner ---------- */
+function refineLine(txt){
+ txt=txt.replace(/into (an|a)? ?(\w+ )?(oil painting|watercolor|digital illustration|poem|sketch|collage) rendered in (\w+)/gi,
+   (m,a,b,med,style)=>`into a ${style.toLowerCase()} ${med}`);
+ txt=txt.replace(/into realistic/gi,"into a realistic");
+ txt=txt.replace(/into (oil painting|watercolor|digital illustration|poem|collage|sketch)/gi,
+   (m,med)=>`into a ${med}`);
+ return txt.charAt(0).toUpperCase()+txt.slice(1);
 }
 
-/* ---------- Sky-Land-Symbol Painter ---------- */
-function drawCanvas(palette){
-  const c=document.createElement("canvas");
-  c.width=420;c.height=300;
-  const ctx=c.getContext("2d");
+/* ---------- Painter ---------- */
+function drawCanvas(p){
+ const c=document.createElement("canvas");c.width=420;c.height=300;
+ const x=c.getContext("2d");
+ const sky=x.createLinearGradient(0,0,0,200);
+ sky.addColorStop(0,p.colors[1]);sky.addColorStop(1,p.colors[2]);
+ x.fillStyle=sky;x.fillRect(0,0,420,200);
+ const land=x.createLinearGradient(0,200,0,300);
+ land.addColorStop(0,p.colors[3]);land.addColorStop(1,p.colors[4]);
+ x.fillStyle=land;x.fillRect(0,200,420,100);
+ x.globalAlpha=0.9;x.fillStyle=p.colors[0];
+ const s=Math.random();
+ if(s<.33){x.beginPath();x.arc(320,80,40,0,Math.PI*2);x.fill();}
+ else if(s<.66){x.fillRect(200,150,8,70);x.beginPath();x.arc(204,140,18,0,Math.PI*2);x.fill();}
+ else{x.beginPath();x.moveTo(0,220);x.lineTo(140,150);x.lineTo(280,220);
+   x.lineTo(420,150);x.lineTo(420,300);x.lineTo(0,300);x.closePath();x.fill();}
+ return c;
+}
 
-  // sky
-  const sky=ctx.createLinearGradient(0,0,0,200);
-  sky.addColorStop(0,palette.colors[1]);
-  sky.addColorStop(1,palette.colors[2]);
-  ctx.fillStyle=sky;ctx.fillRect(0,0,420,200);
-
-  // ground
-  const ground=ctx.createLinearGradient(0,200,0,300);
-  ground.addColorStop(0,palette.colors[3]);
-  ground.addColorStop(1,palette.colors[4]);
-  ctx.fillStyle=ground;ctx.fillRect(0,200,420,100);
-
-  // symbol element
-  ctx.globalAlpha=0.9;
-  ctx.fillStyle=palette.colors[0];
-  const pick=Math.random();
-  if(pick<0.33){
-    ctx.beginPath();ctx.arc(320,80,40,0,Math.PI*2);ctx.fill();       // sun/moon
-  }else if(pick<0.66){
-    ctx.fillRect(200,150,8,70);ctx.beginPath();ctx.arc(204,140,18,0,Math.PI*2);ctx.fill(); // rose/plant
-  }else{
-    ctx.beginPath();ctx.moveTo(0,220);ctx.lineTo(140,150);ctx.lineTo(280,220);
-    ctx.lineTo(420,150);ctx.lineTo(420,300);ctx.lineTo(0,300);ctx.closePath();ctx.fill(); // mountain
-  }
-  return c;
+/* ---------- Gallery Handling ---------- */
+function addToGallery(imgData){
+ let gallery=JSON.parse(localStorage.getItem("creativeGallery")||"[]");
+ gallery.unshift(imgData);
+ if(gallery.length>5)gallery=gallery.slice(0,5);
+ localStorage.setItem("creativeGallery",JSON.stringify(gallery));
+ renderGallery();
+}
+function renderGallery(){
+ const wrap=document.getElementById("gallery");wrap.innerHTML="";
+ const gallery=JSON.parse(localStorage.getItem("creativeGallery")||"[]");
+ gallery.forEach(src=>{const i=new Image();i.src=src;wrap.appendChild(i);});
 }
 
 /* ---------- Generator ---------- */
 function generateScene(){
-  const theme=v('theme'),emotion=v('emotion'),object=v('object'),fav=v('favorites'),style=v('style');
-  if(!theme&&!emotion&&!object&&!fav){toast('Enter at least one idea word.');return;}
-  const personality=randomChoice(personalities);
-  const favs=fav.split(',').map(f=>f.trim()).filter(f=>f);
-  const favWord=favs.length?randomChoice(favs):randomChoice(DEFAULT_DICT);
-  const obj=object||randomChoice(DEFAULT_DICT);
+ const theme=v("theme"),emo=v("emotion"),obj=v("object"),fav=v("favorites"),style=v("style");
+ if(!theme&&!emo&&!obj&&!fav){toast("Enter at least one idea.");return;}
+ const per=rand(personalities);
+ const favs=fav.split(",").map(f=>f.trim()).filter(f=>f);
+ const favWord=favs.length?rand(favs):rand(dict);
+ const connector=rand(["under the quiet sky","beneath the open horizon","as daylight drifts"]);
+ const verb=rand(["sways","glows","rests","lingers"]);
+ let line=`${per.connector} a ${theme||rand(dict)} ${rand(per.adjectives)} in ${emo||"wonder"}, where the ${obj||rand(dict)} ${verb} ${connector}. Translate this feeling into ${rand(mediums)}${style?(" rendered in "+style):""}.`;
+ line=refineLine(line);
 
-  const connector=randomChoice(['under the quiet sky','where silence hums softly','beneath the open horizon','while twilight listens','as daylight drifts away']);
-  const plural=obj.endsWith('s');
-  const verb=plural?randomChoice(['sway','glow','rest','linger']):randomChoice(['sways','glows','rests','lingers']);
-  let line=`${personality.connector} a ${theme||randomChoice(DEFAULT_DICT)} ${randomChoice(personality.adjectives)} in ${emotion||"quiet wonder"}, where the ${obj} ${verb} ${connector}. Translate this feeling into ${randomChoice(mediums)}${style?(" rendered in "+style):""}.`;
-  line=cleanSentence(refineLine(line));
+ const palette=rand(palettes);
+ const card=document.createElement("div");card.className="card";
+ const h4=document.createElement("h4");h4.textContent="Creative Spark";
+ const p=document.createElement("p");p.textContent=line;
+ const cv=drawCanvas(palette);
 
-  const palette=randomChoice(colorPalettes);
-  const card=document.createElement('div');card.className='card';
-  const h4=document.createElement('h4');h4.textContent='Creative Spark';
-  const p=document.createElement('p');p.textContent=line;
-  const bar=document.createElement('div');bar.className='color-bar';
-  palette.colors.forEach(c=>{const sw=document.createElement('div');sw.className='color-swatch';sw.style.background=c;bar.appendChild(sw);});
-  const cv=drawCanvas(palette);
-  card.append(h4,p,bar,cv);
-  document.getElementById('results').replaceChildren(card);
-  document.getElementById('nextBtn').style.display='inline-block';
+ /* action buttons */
+ const saveBtn=document.createElement("button");saveBtn.textContent="🖼 Save Artwork";
+ saveBtn.onclick=()=>{
+   const link=document.createElement("a");
+   link.download="creative-spark.png";
+   link.href=cv.toDataURL("image/png");
+   link.click();
+   addToGallery(cv.toDataURL("image/png"));
+   toast("Artwork saved!");
+ };
+ const copyBtn=document.createElement("button");copyBtn.textContent="📋 Copy Prompt";
+ copyBtn.onclick=()=>{navigator.clipboard.writeText(line);toast("Prompt copied!");};
+
+ const actions=document.createElement("div");actions.className="actions-row";
+ actions.append(saveBtn,copyBtn);
+
+ card.append(h4,p,cv,actions);
+ document.getElementById("results").replaceChildren(card);
+ document.getElementById("nextBtn").style.display="inline-block";
 }
 
 /* ---------- Events ---------- */
-document.getElementById('beginBtn').onclick=()=>{document.getElementById('home').style.display='none';document.getElementById('generator').style.display='flex';};
-document.getElementById('generateBtn').onclick=()=>generateScene();
-document.getElementById('nextBtn').onclick=()=>generateScene();
-document.getElementById('clearBtn').onclick=()=>{['theme','emotion','object','favorites'].forEach(id=>document.getElementById(id).value='');document.getElementById('results').innerHTML='';document.getElementById('nextBtn').style.display='none';};
-document.getElementById('accessBtn').onclick=()=>{document.body.classList.toggle('high-contrast');toast('Contrast mode toggled');};
+document.getElementById("beginBtn").onclick=()=>{document.getElementById("home").style.display="none";document.getElementById("generator").style.display="flex";renderGallery();};
+document.getElementById("generateBtn").onclick=generateScene;
+document.getElementById("nextBtn").onclick=generateScene;
+document.getElementById("clearBtn").onclick=()=>{["theme","emotion","object","favorites"].forEach(id=>document.getElementById(id).value="");document.getElementById("results").innerHTML="";document.getElementById("nextBtn").style.display="none";};
+document.getElementById("accessBtn").onclick=()=>{document.body.classList.toggle("high-contrast");toast("Contrast mode toggled");};
 </script>
 </body>
 </html>
