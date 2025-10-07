@@ -1,0 +1,77 @@
+{
+  "adjectives": [
+    "gentle", "vivid", "dreamy", "serene", "bold", "whimsical", "quiet", "sparkling", "melancholy", "radiant",
+    "luminous", "soft", "brilliant", "mystical", "peaceful", "restless", "ethereal", "rustic", "mellow", "shadowed",
+    "vibrant", "misty", "playful", "delicate", "transcendent", "ancient", "fierce", "tender", "majestic", "fragile",
+    "glimmering", "solemn", "golden", "pale", "sacred", "ornate", "distant", "subtle", "raw", "enchanted",
+    "hushed", "gentlehearted", "radiant", "wistful", "haunting", "warm", "graceful", "verdant", "timeless", "mystic",
+    "silken", "weathered", "celestial", "drifting", "crystalline", "glowing", "hazy", "unfolding", "fragile", "spiraling",
+    "luminous", "resonant", "infinite", "pure", "shadowy", "hollow", "mirrored", "soft-spoken", "eternal", "fading"
+  ],
+
+  "verbs": [
+    "sways", "glows", "rests", "whispers", "shines", "drifts", "dances", "lingers", "blooms", "wanders",
+    "gleams", "rises", "falls", "echoes", "emerges", "fades", "breathes", "shimmers", "flows", "glimmers",
+    "twists", "unfolds", "stirs", "radiates", "trembles", "glides", "awakens", "settles", "bends", "burns",
+    "reflects", "ripples", "spreads", "sparkles", "descends", "hovers", "melts", "returns", "deepens", "surges",
+    "erupts", "illuminates", "fractures", "connects", "surrounds", "gathers", "absorbs", "dissolves", "carries", "sleeps"
+  ],
+
+  "emotions": [
+    "hope", "joy", "longing", "calm", "love", "melancholy", "awe", "peace", "wonder", "nostalgia",
+    "curiosity", "gratitude", "freedom", "yearning", "contentment", "mystery", "solitude", "tension", "harmony", "compassion",
+    "clarity", "forgiveness", "reverence", "serendipity", "desire", "trust", "grace", "anticipation", "surrender", "faith",
+    "patience", "ecstasy", "sadness", "triumph", "fear", "acceptance", "renewal", "sorrow", "amazement", "euphoria",
+    "tranquility", "courage", "release", "intuition", "gentleness", "comfort", "excitement", "balance", "wonderment", "belonging"
+  ],
+
+  "mediums": [
+    "oil painting", "watercolor", "digital illustration", "vector art", "sketch", "collage", "poem", "short story", "composition",
+    "ink drawing", "ceramic sculpture", "mixed media", "charcoal sketch", "encaustic painting", "installation", "motion graphic",
+    "photograph", "soundscape", "textile art", "printmaking", "mural", "video art", "calligraphy", "assemblage", "wood carving",
+    "bronze casting", "light installation", "performance piece", "projection mapping", "tapestry", "paper craft", "3D rendering",
+    "augmented reality", "interactive exhibit", "animation", "illustrated journal", "graphic novel", "screen print", "eco-sculpture", "digital collage"
+  ],
+
+  "themes": [
+    "landscape", "sunset", "forest", "western", "seascape", "garden", "dreamscape", "mountain range", "riverbank", "valley",
+    "urban night", "desert horizon", "moonlit shore", "ancient ruins", "cloud kingdom", "autumn path", "snow field", "harbor town", "hidden meadow", "lost temple",
+    "ocean floor", "enchanted wood", "starlit desert", "forgotten city", "northern lights", "sacred grove", "crystal cavern", "frozen waterfall", "floating island", "mirrored lake",
+    "sun-drenched alley", "temple gate", "rain garden", "shadowed canyon", "silent forest", "celestial plain", "flooded ruins", "wind valley", "lunar coast", "golden dunes"
+  ],
+
+  "symbols": [
+    "rose", "moon", "star", "tree", "mountain", "bird", "boat", "fence", "flower", "light",
+    "shadow", "path", "mirror", "feather", "key", "window", "bridge", "shell", "lantern", "cloud",
+    "river", "doorway", "stone", "flame", "compass", "hourglass", "mask", "leaf", "wheel", "thread",
+    "candle", "book", "wing", "gate", "seed", "veil", "eye", "orb", "pillar", "circle",
+    "vine", "root", "chain", "crystal", "torch", "mirror pool", "echo", "nest", "bell", "veil of light"
+  ],
+
+  "personalities": {
+    "poetic": [
+      "Imagine a {adj} {theme} filled with {emotion}, where the {object} {verb} beneath the open horizon.",
+      "A moment where {object} {verb} through a {adj} {theme}, carrying the essence of {emotion}.",
+      "Behold the {theme}, {adj} and alive — the {object} {verb} beneath the quiet sky.",
+      "In this {adj} {theme}, {object} {verb} softly, a whisper of {emotion} lingering in the air.",
+      "The {object} {verb} in the {theme}, breathing {emotion} into a {adj} silence.",
+      "From a {theme} of {adj} color, {emotion} unfolds as the {object} {verb} beyond reach.",
+      "Let {emotion} drift like wind through the {theme}, where the {object} {verb} among shadows.",
+      "Each {object} {verb} through time’s {adj} current, echoing {emotion} in the {theme}.",
+      "A {theme} of {adj} beauty emerges — the {object} {verb} and the air hums with {emotion}.",
+      "As dawn breaks, the {object} {verb} in a {adj} {theme} filled with {emotion} and light."
+    ],
+    "descriptive": [
+      "Visualize a {theme} scene bathed in {emotion}. Place a {object} near the horizon and balance light and space.",
+      "Sketch a {adj} {theme} filled with depth. Let the {object} rest beneath soft tones of {emotion}.",
+      "Compose the {theme} with attention to {emotion}, placing the {object} as your focal point.",
+      "Plan a {adj} {theme} — the {object} should guide the viewer’s eye through a field of {emotion}.",
+      "Design a {theme} atmosphere where {emotion} becomes visible through the {object}.",
+      "Frame the {theme} so that {object} and light carry the essence of {emotion}.",
+      "Construct your {theme} with {adj} balance — let {emotion} emerge from the placement of {object}.",
+      "Arrange a {theme} of {adj} tone; emphasize {object} as a vessel for {emotion}.",
+      "Draw the {theme} in layers of {emotion}, guiding the viewer toward the {object}.",
+      "Design a {theme} composition where {object}, color, and {emotion} harmonize in {adj} unity."
+    ]
+  }
+}
