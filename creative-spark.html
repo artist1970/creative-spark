@@ -3,91 +3,72 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Creative Spark v1.0 — Sovereign Edition</title>
+<title>Creative Spark v1.1 — Aurora Edition</title>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 
 <style>
 :root {
-  --bg-black: #000;
-  --sunset: #ff6e3a;
-  --accent: #ff8a59;
-  --muted-white: rgba(255,255,255,0.92);
-  --radius: 16px;
-  --font: "Poppins", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  --bg-black:#000;--sunset:#ff6e3a;--accent:#ff8a59;--muted-white:rgba(255,255,255,0.92);
+  --radius:16px;--font:"Poppins",system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial;
 }
 *{box-sizing:border-box}
-body {
-  margin:0;
-  background:var(--bg-black);
-  color:var(--muted-white);
-  font-family:var(--font);
-  overflow-x:hidden;
-  font-size:22px;
-}
+body{margin:0;background:var(--bg-black);color:var(--muted-white);font-family:var(--font);overflow-x:hidden;font-size:22px;}
 .app{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:40px 20px;position:relative;overflow:hidden}
-.bg-art{position:absolute;inset:0;background:url('https://via.placeholder.com/1600x900/000/111?text=Creative+Spark') center/cover no-repeat;opacity:.08;filter:blur(3px);pointer-events:none;z-index:0}
+.bg-art{position:absolute;inset:0;background:url('https://via.placeholder.com/1600x900/000/111?text=Creative+Spark')center/cover no-repeat;opacity:.08;filter:blur(3px);pointer-events:none;z-index:0}
 .frame{z-index:10;width:100%;max-width:980px;display:flex;flex-direction:column;align-items:center;gap:32px}
+
+/* ---------- Home ---------- */
 .home{text-align:center;padding:28px}
-.title{font-size:clamp(40px,6vw,56px);font-weight:800;letter-spacing:-.01em;text-shadow:0 0 24px rgba(255,110,58,.3)}
+.title{font-size:clamp(40px,6vw,56px);font-weight:800;text-shadow:0 0 24px rgba(255,110,58,.3)}
 .tagline{font-size:clamp(22px,2.5vw,26px);opacity:.9;margin-top:12px;animation:fadeShimmer 5s infinite ease-in-out}
 @keyframes fadeShimmer{0%,100%{opacity:.6}50%{opacity:1}}
-.begin-btn{
-  margin-top:30px;border:none;
-  background:linear-gradient(180deg,var(--sunset),var(--accent));
-  color:#fff;padding:28px 70px;border-radius:999px;
-  font-size:clamp(26px,3vw,30px);font-weight:700;cursor:pointer;
-  box-shadow:0 0 40px rgba(255,110,58,.4);
-  transition:all .25s ease;
-}
+.begin-btn{margin-top:30px;border:none;background:linear-gradient(180deg,var(--sunset),var(--accent));color:#fff;
+padding:28px 70px;border-radius:999px;font-size:clamp(26px,3vw,30px);font-weight:700;cursor:pointer;
+box-shadow:0 0 40px rgba(255,110,58,.4);transition:all .25s ease}
 .begin-btn:hover{transform:scale(1.05);box-shadow:0 0 60px rgba(255,110,58,.6)}
 .footer-note{margin-top:60px;font-size:16px;color:rgba(255,255,255,.4)}
-.generator{
-  display:none;width:100%;padding:36px;border-radius:var(--radius);
-  background:linear-gradient(180deg,rgba(255,255,255,.03),rgba(255,255,255,.01));
-  box-shadow:0 8px 34px rgba(0,0,0,.6);flex-direction:column;gap:20px;
-}
+
+/* ---------- Generator ---------- */
+.generator{display:none;width:100%;padding:36px;border-radius:var(--radius);
+background:linear-gradient(180deg,rgba(255,255,255,.03),rgba(255,255,255,.01));
+box-shadow:0 8px 34px rgba(0,0,0,.6);flex-direction:column;gap:20px;}
 label{font-size:24px;font-weight:600;color:rgba(255,255,255,.8)}
-input[type=text],select{
-  font-size:26px;padding:18px;border-radius:14px;border:2px solid rgba(255,255,255,.08);
-  background:transparent;color:var(--muted-white);outline:none;min-height:60px;width:100%;
-}
+input[type=text],select{font-size:26px;padding:18px;border-radius:14px;border:2px solid rgba(255,255,255,.08);
+background:transparent;color:var(--muted-white);outline:none;min-height:60px;width:100%}
 input:focus,select:focus{border-color:var(--accent)}
 .inputs{display:grid;gap:18px}
+
+/* ---------- Aurora Dashboard ---------- */
+#auroraDashboard{display:flex;flex-wrap:wrap;gap:14px;align-items:center;justify-content:center;
+background:rgba(255,255,255,0.05);padding:14px 20px;border-radius:14px;box-shadow:0 0 20px rgba(0,0,0,0.3)}
+#auroraDashboard label{font-size:18px;font-weight:500}
+#auroraDashboard select,#auroraDashboard input[type=range]{font-size:18px;padding:6px 10px;border-radius:8px;
+border:1px solid rgba(255,255,255,0.2);background:rgba(0,0,0,0.3);color:#fff}
+#auroraDashboard input[type=checkbox]{transform:scale(1.3);margin-left:6px}
+
 .generate-row{display:flex;gap:14px;align-items:center;flex-wrap:wrap}
-button.generate-btn,button.next-btn{
-  background:linear-gradient(180deg,var(--sunset),var(--accent));color:white;
-  padding:18px 32px;border:none;border-radius:16px;font-weight:700;font-size:24px;cursor:pointer;
-}
+button.generate-btn,button.next-btn{background:linear-gradient(180deg,var(--sunset),var(--accent));color:white;
+padding:18px 32px;border:none;border-radius:16px;font-weight:700;font-size:24px;cursor:pointer}
 button.next-btn{background:#333;border:1px solid rgba(255,255,255,.2)}
-.clear-btn{
-  background:transparent;color:rgba(255,255,255,.7);
-  border:1px solid rgba(255,255,255,.1);padding:14px 20px;border-radius:14px;
-  font-size:20px;cursor:pointer;
-}
+.clear-btn{background:transparent;color:rgba(255,255,255,.7);border:1px solid rgba(255,255,255,.1);
+padding:14px 20px;border-radius:14px;font-size:20px;cursor:pointer}
 .results{margin-top:16px;display:grid;gap:22px}
-.card{
-  background:linear-gradient(180deg,rgba(255,255,255,.02),rgba(255,255,255,.01));
-  border-radius:22px;padding:30px;display:flex;flex-direction:column;gap:18px;
-  border:1px solid rgba(255,255,255,.05);box-shadow:0 8px 34px rgba(0,0,0,.7);
-  animation:fadeIn .6s ease both;
-}
+.card{background:linear-gradient(180deg,rgba(255,255,255,.02),rgba(255,255,255,.01));
+border-radius:22px;padding:30px;display:flex;flex-direction:column;gap:18px;
+border:1px solid rgba(255,255,255,.05);box-shadow:0 8px 34px rgba(0,0,0,.7);animation:fadeIn .6s ease both}
 @keyframes fadeIn{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
 .card h4{margin:0;font-size:28px;font-weight:700}
 .card p{margin:0;font-size:24px;line-height:1.5}
 .color-bar{display:flex;margin-top:10px;border-radius:10px;overflow-x:auto;height:32px}
-.color-swatch{flex:0 0 60px;height:100%;cursor:grab;border-right:2px solid rgba(0,0,0,.1)}
+.color-swatch{flex:0 0 60px;height:100%;border-right:2px solid rgba(0,0,0,.1)}
 .toast{position:fixed;bottom:30px;left:50%;transform:translateX(-50%);
 background:rgba(0,0,0,.85);color:#fff;padding:16px 26px;border-radius:10px;
 font-size:20px;opacity:0;pointer-events:none;transition:opacity .4s}
 .toast.show{opacity:1}
 .access-toggle{position:fixed;bottom:18px;right:18px;z-index:40;background:#222;
 color:#fff;border:1px solid rgba(255,255,255,.2);border-radius:12px;padding:12px 16px;cursor:pointer}
-.high-contrast body{background:#fff;color:#000}
-#auroraBadge{
-  position:fixed;bottom:10px;right:14px;font-size:14px;
-  background:rgba(255,255,255,0.2);padding:6px 10px;border-radius:10px;
-  backdrop-filter:blur(6px);color:white;font-family:'Poppins',sans-serif;
-}
+#auroraBadge{position:fixed;bottom:10px;right:14px;font-size:14px;background:rgba(255,255,255,0.2);
+padding:6px 10px;border-radius:10px;backdrop-filter:blur(6px);color:white;font-family:'Poppins',sans-serif}
 </style>
 </head>
 <body>
@@ -95,6 +76,7 @@ color:#fff;border:1px solid rgba(255,255,255,.2);border-radius:12px;padding:12px
 <div class="app">
   <div class="bg-art"></div>
   <div class="frame">
+
     <section id="home" class="home">
       <div class="title">Creative Spark</div>
       <div class="tagline">Every story begins with a spark.<br>Paint with feeling. Dream with light.</div>
@@ -124,6 +106,18 @@ color:#fff;border:1px solid rgba(255,255,255,.2);border-radius:12px;padding:12px
         </label>
       </div>
 
+      <!-- Aurora Dashboard -->
+      <div id="auroraDashboard">
+        <label>Complexity Tier <input type="range" id="tierSlider" min="0" max="2" value="1"></label>
+        <label>Mood <select id="moodSelect">
+          <option value="neutral">Neutral</option>
+          <option value="joyful">Joyful</option>
+          <option value="melancholy">Melancholy</option>
+          <option value="mystical">Mystical</option>
+        </select></label>
+        <label>Metaphor Mode <input type="checkbox" id="metaToggle" checked></label>
+      </div>
+
       <div class="generate-row">
         <button id="generateBtn" class="generate-btn">Generate Spark</button>
         <button id="nextBtn" class="next-btn" style="display:none;">Next Spark ↻</button>
@@ -137,11 +131,11 @@ color:#fff;border:1px solid rgba(255,255,255,.2);border-radius:12px;padding:12px
 
 <div class="toast" id="toast"></div>
 <button class="access-toggle" id="accessBtn">High Contrast ⇄</button>
-<div id="auroraBadge">✨ Refined by Aurora</div>
+<div id="auroraBadge">✨ Refined by Aurora v8.0</div>
 
-<!-- Load Aurora Language Engine -->
+<!-- Aurora v8 -->
 <script src="aurora_v8.js"></script>
-<!-- Main Creative Spark Logic -->
+
 <script>
 const colorPalettes=[
   {name:"Sunset Serenity",colors:["#FF6E3A","#FF8A59","#FFD1A4","#FFE1C6","#2C1B17"]},
@@ -159,19 +153,15 @@ const v=id=>document.getElementById(id).value.trim();
 function toast(msg){const t=document.getElementById('toast');t.textContent=msg;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),2600);}
 
 function drawCanvas(palette){
-  const canvas=document.createElement("canvas");
-  canvas.width=420;canvas.height=300;
+  const canvas=document.createElement("canvas");canvas.width=420;canvas.height=300;
   const ctx=canvas.getContext("2d");
   const grad=ctx.createLinearGradient(0,0,420,300);
-  grad.addColorStop(0,palette.colors[0]);
-  grad.addColorStop(1,palette.colors[2]);
+  grad.addColorStop(0,palette.colors[0]);grad.addColorStop(1,palette.colors[2]);
   ctx.fillStyle=grad;ctx.fillRect(0,0,420,300);
-  for(let i=0;i<25;i++){
-    ctx.globalAlpha=0.05+Math.random()*0.15;
+  for(let i=0;i<25;i++){ctx.globalAlpha=0.05+Math.random()*0.15;
     ctx.fillStyle=palette.colors[Math.floor(Math.random()*palette.colors.length)];
     const x=Math.random()*420,y=Math.random()*300,w=50+Math.random()*100,h=20+Math.random()*40;
-    ctx.beginPath();ctx.ellipse(x,y,w,h,Math.random()*Math.PI,0,Math.PI*2);ctx.fill();
-  }
+    ctx.beginPath();ctx.ellipse(x,y,w,h,Math.random()*Math.PI,0,Math.PI*2);ctx.fill();}
   ctx.globalAlpha=1;canvas.className='generated-img';return canvas;
 }
 
@@ -182,11 +172,17 @@ function generateScene(){
   const favs=fav.split(',').map(f=>f.trim()).filter(f=>f);
   const favWord=favs.length?randomChoice(favs):randomChoice(DEFAULT_DICT);
   const obj=object||randomChoice(DEFAULT_DICT);
-  let line=`${personality.connector} a ${personality.adjectives[Math.floor(Math.random()*personality.adjectives.length)]} ${theme||randomChoice(DEFAULT_DICT)} filled with ${emotion||"wonder"}, where the ${obj} ${randomChoice(personality.verbs)} beneath the open horizon. Translate this feeling into ${randomChoice(mediums)}${style?(" rendered in "+style):""}.`;
+  let line=`${personality.connector} a ${randomChoice(personality.adjectives)} ${theme||randomChoice(DEFAULT_DICT)} filled with ${emotion||"wonder"}, where the ${obj} ${randomChoice(personality.verbs)} beneath the open horizon. Translate this feeling into ${randomChoice(mediums)}${style?(" rendered in "+style):""}.`;
 
-  // ✨ Aurora Refinement
-  line = auroraRefine(line);
-  toast("✨ Aurora refined your language for clarity and flow");
+  // 🌸 Aurora v8 Integration with Dashboard Controls
+  const tier=parseInt(document.getElementById('tierSlider').value);
+  const mood=document.getElementById('moodSelect').value;
+  const meta=document.getElementById('metaToggle').checked;
+  if(typeof auroraRefineV8Complete==="function"){
+    line=auroraRefineV8Complete(line,{tier,mood});
+    if(!meta){line=line.replace(/like\s[^.]+/gi,"");}
+  }
+  toast(`✨ Aurora v8 refined (${mood}, tier ${tier})`);
 
   const palette=randomChoice(colorPalettes);
   const card=document.createElement('div');card.className='card';
@@ -203,15 +199,9 @@ function generateScene(){
 document.getElementById('beginBtn').onclick=()=>{document.getElementById('home').style.display='none';document.getElementById('generator').style.display='flex';};
 document.getElementById('generateBtn').onclick=()=>generateScene();
 document.getElementById('nextBtn').onclick=()=>generateScene();
-document.getElementById('clearBtn').onclick=()=>{
-  ['theme','emotion','object','favorites'].forEach(id=>document.getElementById(id).value='');
-  document.getElementById('results').innerHTML='';
-  document.getElementById('nextBtn').style.display='none';
-};
-document.getElementById('accessBtn').onclick=()=>{
-  document.body.classList.toggle('high-contrast');
-  toast('Contrast mode toggled');
-};
+document.getElementById('clearBtn').onclick=()=>{['theme','emotion','object','favorites'].forEach(id=>document.getElementById(id).value='');
+  document.getElementById('results').innerHTML='';document.getElementById('nextBtn').style.display='none';};
+document.getElementById('accessBtn').onclick=()=>{document.body.classList.toggle('high-contrast');toast('Contrast mode toggled');};
 </script>
 </body>
 </html>
