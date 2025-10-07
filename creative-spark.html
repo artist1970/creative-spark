@@ -3,210 +3,227 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Creative Spark v3.4 — Sovereign Classroom Edition</title>
+<title>Creative Spark v1.0 — Sovereign Horizon Edition</title>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 <style>
-:root{
- --bg-black:#000;--sunset:#ff6e3a;--accent:#ff8a59;--muted-white:rgba(255,255,255,.92);
- --radius:16px;--font:"Poppins",system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial;
+:root {
+  --bg-black:#000;
+  --sunset:#ff6e3a;
+  --accent:#ff8a59;
+  --muted-white:rgba(255,255,255,0.92);
+  --radius:16px;
+  --font:"Poppins",system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial;
 }
-*{box-sizing:border-box}
-body{margin:0;background:var(--bg-black);color:var(--muted-white);font-family:var(--font);overflow-x:hidden;font-size:22px}
-.app{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:40px 20px;position:relative;overflow:hidden}
-.bg-art{position:absolute;inset:0;opacity:.08;filter:blur(3px);pointer-events:none;z-index:0}
-.frame{z-index:10;width:100%;max-width:980px;display:flex;flex-direction:column;align-items:center;gap:32px}
-.home{text-align:center;padding:28px}
-.title{font-size:clamp(40px,6vw,56px);font-weight:800;text-shadow:0 0 24px rgba(255,110,58,.3)}
-.tagline{font-size:clamp(22px,2.5vw,26px);opacity:.9;margin-top:12px;animation:fadeShimmer 5s infinite ease-in-out}
-@keyframes fadeShimmer{0%,100%{opacity:.6}50%{opacity:1}}
-.begin-btn{margin-top:30px;border:none;background:linear-gradient(180deg,var(--sunset),var(--accent));color:#fff;
-padding:28px 70px;border-radius:999px;font-size:clamp(26px,3vw,30px);font-weight:700;cursor:pointer;
-box-shadow:0 0 40px rgba(255,110,58,.4);transition:all .25s ease}
-.begin-btn:hover{transform:scale(1.05);box-shadow:0 0 60px rgba(255,110,58,.6)}
-.footer-note{margin-top:60px;font-size:16px;color:rgba(255,255,255,.4)}
-.generator{display:none;width:100%;padding:36px;border-radius:var(--radius);
-background:linear-gradient(180deg,rgba(255,255,255,.03),rgba(255,255,255,.01));
-box-shadow:0 8px 34px rgba(0,0,0,.6);flex-direction:column;gap:20px}
-label{font-size:24px;font-weight:600;color:rgba(255,255,255,.8)}
-input[type=text],select{font-size:26px;padding:18px;border-radius:14px;border:2px solid rgba(255,255,255,.08);
-background:transparent;color:var(--muted-white);outline:none;min-height:60px;width:100%}
-input:focus,select:focus{border-color:var(--accent)}
-.inputs{display:grid;gap:18px}
-.generate-row{display:flex;gap:14px;align-items:center;flex-wrap:wrap}
-button{cursor:pointer}
-button.generate-btn,button.next-btn{background:linear-gradient(180deg,var(--sunset),var(--accent));color:white;
-padding:18px 32px;border:none;border-radius:16px;font-weight:700;font-size:22px}
-button.next-btn{background:#333;border:1px solid rgba(255,255,255,.2)}
-.clear-btn{background:transparent;color:rgba(255,255,255,.7);border:1px solid rgba(255,255,255,.1);
-padding:14px 20px;border-radius:14px;font-size:20px}
-.results{margin-top:16px;display:grid;gap:22px}
-.card{background:linear-gradient(180deg,rgba(255,255,255,.02),rgba(255,255,255,.01));
-border-radius:22px;padding:30px;display:flex;flex-direction:column;gap:18px;
-border:1px solid rgba(255,255,255,.05);box-shadow:0 8px 34px rgba(0,0,0,.7);animation:fadeIn .6s ease both}
-@keyframes fadeIn{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
-.card h4{margin:0;font-size:28px;font-weight:700}
-.card p{margin:0;font-size:24px;line-height:1.5}
-.card canvas{border-radius:12px}
-.actions-row{display:flex;gap:14px;flex-wrap:wrap}
-.gallery{margin-top:30px;display:flex;flex-wrap:wrap;gap:12px;justify-content:center}
-.gallery img{width:120px;height:90px;object-fit:cover;border-radius:8px;border:1px solid rgba(255,255,255,.2)}
-.toast{position:fixed;bottom:30px;left:50%;transform:translateX(-50%);
-background:rgba(0,0,0,.85);color:#fff;padding:16px 26px;border-radius:10px;
-font-size:20px;opacity:0;pointer-events:none;transition:opacity .4s}
-.toast.show{opacity:1}
-.access-toggle{position:fixed;bottom:18px;right:18px;z-index:40;background:#222;
-color:#fff;border:1px solid rgba(255,255,255,.2);border-radius:12px;padding:12px 16px}
+*{box-sizing:border-box;}
+body{margin:0;background:var(--bg-black);color:var(--muted-white);font-family:var(--font);overflow-x:hidden;font-size:22px;}
+.app{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:40px 20px;position:relative;overflow:hidden;}
+.bg-art{position:absolute;inset:0;background:url('https://via.placeholder.com/1600x900/000/111?text=Creative+Spark') center/cover no-repeat;opacity:.08;filter:blur(3px);pointer-events:none;z-index:0;}
+.frame{z-index:10;width:100%;max-width:980px;display:flex;flex-direction:column;align-items:center;gap:32px;}
+.home{text-align:center;padding:28px;}
+.title{font-size:clamp(40px,6vw,56px);font-weight:800;letter-spacing:-.01em;text-shadow:0 0 24px rgba(255,110,58,.3);}
+.tagline{font-size:clamp(22px,2.5vw,26px);opacity:.9;margin-top:12px;line-height:1.5;}
+.begin-btn{margin-top:30px;border:none;background:linear-gradient(180deg,var(--sunset),var(--accent));color:#fff;padding:28px 70px;border-radius:999px;font-size:clamp(26px,3vw,30px);font-weight:700;cursor:pointer;box-shadow:0 0 40px rgba(255,110,58,.4);transition:all .25s ease;}
+.begin-btn:hover{transform:scale(1.05);box-shadow:0 0 60px rgba(255,110,58,.6);}
+.footer-note{margin-top:60px;font-size:16px;color:rgba(255,255,255,.4);}
+.generator{display:none;width:100%;padding:36px;border-radius:var(--radius);background:linear-gradient(180deg,rgba(255,255,255,.03),rgba(255,255,255,.01));box-shadow:0 8px 34px rgba(0,0,0,.6);flex-direction:column;gap:20px;}
+label{font-size:24px;font-weight:600;color:rgba(255,255,255,.8);}
+input[type=text],select{font-size:26px;padding:18px;border-radius:14px;border:2px solid rgba(255,255,255,.08);background:transparent;color:var(--muted-white);outline:none;min-height:60px;width:100%;}
+input:focus,select:focus{border-color:var(--accent);}
+.inputs{display:grid;gap:18px;}
+.controls{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:16px;margin-top:12px;}
+button.generate-btn,button.next-btn{background:linear-gradient(180deg,var(--sunset),var(--accent));color:white;padding:18px 32px;border:none;border-radius:16px;font-weight:700;font-size:24px;cursor:pointer;}
+button.next-btn{background:#333;border:1px solid rgba(255,255,255,.2);}
+.clear-btn{background:transparent;color:rgba(255,255,255,.7);border:1px solid rgba(255,255,255,.1);padding:14px 20px;border-radius:14px;font-size:20px;cursor:pointer;}
+.results{margin-top:16px;display:grid;gap:22px;}
+.card{background:linear-gradient(180deg,rgba(255,255,255,.02),rgba(255,255,255,.01));border-radius:22px;padding:30px;display:flex;flex-direction:column;gap:18px;border:1px solid rgba(255,255,255,.05);box-shadow:0 8px 34px rgba(0,0,0,.7);animation:fadeIn .6s ease both;}
+@keyframes fadeIn{from{opacity:0;transform:translateY(20px);}to{opacity:1;transform:translateY(0);}}
+.card h4{margin:0;font-size:28px;font-weight:700;}
+.card p{margin:0;font-size:24px;line-height:1.5;}
+.toast{position:fixed;bottom:30px;left:50%;transform:translateX(-50%);background:rgba(0,0,0,.85);color:#fff;padding:16px 26px;border-radius:10px;font-size:20px;opacity:0;pointer-events:none;transition:opacity .4s;}
+.toast.show{opacity:1;}
+.access-toggle{position:fixed;bottom:18px;right:18px;z-index:40;background:#222;color:#fff;border:1px solid rgba(255,255,255,.2);border-radius:12px;padding:12px 16px;cursor:pointer;}
+.high-contrast body{background:#fff;color:#000;}
 </style>
 </head>
 <body>
 <div class="app">
-<div class="bg-art"></div>
-<div class="frame">
-<section id="home" class="home">
- <div class="title">Creative Spark</div>
- <div class="tagline">Every story begins with a spark.</div>
- <button id="beginBtn" class="begin-btn">Begin</button>
- <div class="footer-note">Designed by Archaemenes Academy 2025</div>
-</section>
+  <div class="bg-art"></div>
+  <div class="frame">
+    <section id="home" class="home">
+      <div class="title">Creative Spark</div>
+      <div class="tagline">Every story begins with a spark.<br>Paint with feeling. Dream with light.</div>
+      <button id="beginBtn" class="begin-btn">Begin</button>
+      <div class="footer-note">Creative Spark v1.0 — Designed by Archaemenes Academy 2025</div>
+    </section>
 
-<section id="generator" class="generator">
- <div class="inputs">
-   <label>Theme / Concept <input type="text" id="theme" placeholder="e.g. western"></label>
-   <label>Emotion / Mood <input type="text" id="emotion" placeholder="e.g. nostalgic"></label>
-   <label>Object / Symbol <input type="text" id="object" placeholder="e.g. fences"></label>
-   <label>Three Favorites (comma-separated)
-     <input type="text" id="favorites" placeholder="e.g. horses, sunsets, dogs">
-   </label>
-   <label>Artistic Style
-     <select id="style">
-       <option value="">Random / Any</option>
-       <option value="surreal">Surreal</option>
-       <option value="realistic">Realistic</option>
-       <option value="cartoony">Cartoony</option>
-       <option value="impressionistic">Impressionistic</option>
-       <option value="minimalist">Minimalist</option>
-       <option value="abstract">Abstract</option>
-       <option value="fantasy">Fantasy / Concept Art</option>
-     </select>
-   </label>
- </div>
+    <section id="generator" class="generator">
+      <div class="inputs">
+        <label>Theme / Concept <input type="text" id="theme" placeholder="e.g. western"></label>
+        <label>Emotion / Mood <input type="text" id="emotion" placeholder="e.g. nostalgic"></label>
+        <label>Object / Symbol <input type="text" id="object" placeholder="e.g. rose"></label>
+        <label>Three Favorites (comma-separated)
+          <input type="text" id="favorites" placeholder="e.g. rivers, stars, memories">
+        </label>
+        <label>Artistic Style
+          <select id="style">
+            <option value="">Random / Any</option>
+            <option value="surreal">Surreal</option>
+            <option value="realistic">Realistic</option>
+            <option value="cartoony">Cartoony</option>
+            <option value="impressionistic">Impressionistic</option>
+            <option value="minimalist">Minimalist</option>
+            <option value="abstract">Abstract</option>
+            <option value="fantasy">Fantasy / Concept Art</option>
+          </select>
+        </label>
+      </div>
 
- <div class="generate-row">
-   <button id="generateBtn" class="generate-btn">Generate Spark</button>
-   <button id="nextBtn" class="next-btn" style="display:none;">Next Spark ↻</button>
-   <button id="clearBtn" class="clear-btn">Clear</button>
- </div>
+      <div class="controls">
+        <div>
+          <label>🌗 Palette:
+            <select id="paletteMode">
+              <option value="day">Daylight</option>
+              <option value="night">Night</option>
+            </select>
+          </label>
+        </div>
+        <div>
+          <label>✍️ Mode:
+            <select id="toneMode">
+              <option value="poetic">Poetic</option>
+              <option value="descriptive">Descriptive</option>
+            </select>
+          </label>
+        </div>
+        <div>
+          <label>📏 Complexity:
+            <input type="range" id="complexity" min="1" max="3" step="1" value="1">
+          </label>
+        </div>
+      </div>
 
- <div id="results" class="results"></div>
- <div id="gallery" class="gallery"></div>
-</section>
-</div>
+      <div class="generate-row">
+        <button id="generateBtn" class="generate-btn">Generate Spark</button>
+        <button id="nextBtn" class="next-btn" style="display:none;">Next Spark ↻</button>
+        <button id="clearBtn" class="clear-btn">Clear</button>
+      </div>
+
+      <div id="results" class="results"></div>
+    </section>
+  </div>
 </div>
 
 <div class="toast" id="toast"></div>
 <button class="access-toggle" id="accessBtn">High Contrast ⇄</button>
 
 <script>
-/* ---------- Base ---------- */
-const palettes=[{colors:["#FF6E3A","#FF8A59","#FFD1A4","#FFE1C6","#2C1B17"]},
-{colors:["#FADADD","#FFD9E8","#C9E4FF","#E2FFE2","#FFF0B3"]},
-{colors:["#012E40","#027368","#038C73","#A9D9D0","#F2E7DC"]}];
-const personalities=[{connector:"Imagine",adjectives:["whimsical","sparkling","curious"],verbs:["frolics","dances","twirls"]},
-{connector:"A moment where",adjectives:["gentle","dreamy","serene"],verbs:["whispers","lingers","floats"]},
-{connector:"Behold",adjectives:["vivid","dynamic","daring"],verbs:["blazes","shines","roars"]}];
-const mediums=["oil painting","watercolor","digital illustration","poem","sketch","collage"];
-const dict=["sunsets","fences","peace","horses","dogs","rivers","mountains","flowers","trees","boats"];
-const rand=a=>a[Math.floor(Math.random()*a.length)];
-const v=id=>document.getElementById(id).value.trim();
-const toast=t=>{const el=document.getElementById("toast");el.textContent=t;el.classList.add("show");setTimeout(()=>el.classList.remove("show"),2500);};
+// ---------- Helper ----------
+function toast(msg){const t=document.getElementById('toast');t.textContent=msg;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),2600);}
+const random=a=>a[Math.floor(Math.random()*a.length)];
 
-/* ---------- Grammar Refiner ---------- */
-function refineLine(txt){
- txt=txt.replace(/into (an|a)? ?(\w+ )?(oil painting|watercolor|digital illustration|poem|sketch|collage) rendered in (\w+)/gi,
-   (m,a,b,med,style)=>`into a ${style.toLowerCase()} ${med}`);
- txt=txt.replace(/into realistic/gi,"into a realistic");
- txt=txt.replace(/into (oil painting|watercolor|digital illustration|poem|collage|sketch)/gi,
-   (m,med)=>`into a ${med}`);
- return txt.charAt(0).toUpperCase()+txt.slice(1);
+// ---------- Perlin Noise ----------
+function perlin(x){return (Math.sin(x*2.1)+Math.sin(x*1.3)+Math.sin(x*3.7))/3;}
+
+// ---------- Palettes ----------
+const dayPalettes=[["#FF6E3A","#FFD1A4","#FFE1C6","#2C1B17","#FFF8DC"],["#6B8E23","#A9C985","#E5F3DB","#FFF0B3","#FFD56B"]];
+const nightPalettes=[["#0B132B","#1C2541","#3A506B","#5BC0BE","#CDEDF6"],["#1B1B2F","#162447","#1F4068","#1B9AAA","#E43F5A"]];
+
+// ---------- Generate Landscape ----------
+function drawCanvas(palette,mode){
+  const canvas=document.createElement("canvas");canvas.width=420;canvas.height=300;
+  const ctx=canvas.getContext("2d");
+  let grad=ctx.createLinearGradient(0,0,0,300);
+  grad.addColorStop(0,palette[0]);grad.addColorStop(1,palette[2]);
+  ctx.fillStyle=grad;ctx.fillRect(0,0,420,300);
+  ctx.beginPath();
+  for(let x=0;x<=420;x++){
+    const y=220+perlin(x/50)*30;
+    if(x===0)ctx.moveTo(x,y);else ctx.lineTo(x,y);
+  }
+  ctx.lineTo(420,300);ctx.lineTo(0,300);ctx.closePath();
+  ctx.fillStyle=palette[3];ctx.fill();
+  ctx.globalAlpha=0.2;
+  for(let i=0;i<6;i++){
+    const cx=Math.random()*420,cy=Math.random()*100,r=20+Math.random()*40;
+    ctx.beginPath();ctx.arc(cx,cy,r,0,Math.PI*2);ctx.fillStyle=palette[4];ctx.fill();
+  }
+  ctx.globalAlpha=1;
+  const sym=random(["🌞","🌙","⭐","🌳","🏔"]);
+  ctx.font="40px serif";ctx.fillText(sym,Math.random()*360+20,Math.random()*120+40);
+  return canvas;
 }
 
-/* ---------- Painter ---------- */
-function drawCanvas(p){
- const c=document.createElement("canvas");c.width=420;c.height=300;
- const x=c.getContext("2d");
- const sky=x.createLinearGradient(0,0,0,200);
- sky.addColorStop(0,p.colors[1]);sky.addColorStop(1,p.colors[2]);
- x.fillStyle=sky;x.fillRect(0,0,420,200);
- const land=x.createLinearGradient(0,200,0,300);
- land.addColorStop(0,p.colors[3]);land.addColorStop(1,p.colors[4]);
- x.fillStyle=land;x.fillRect(0,200,420,100);
- x.globalAlpha=0.9;x.fillStyle=p.colors[0];
- const s=Math.random();
- if(s<.33){x.beginPath();x.arc(320,80,40,0,Math.PI*2);x.fill();}
- else if(s<.66){x.fillRect(200,150,8,70);x.beginPath();x.arc(204,140,18,0,Math.PI*2);x.fill();}
- else{x.beginPath();x.moveTo(0,220);x.lineTo(140,150);x.lineTo(280,220);
-   x.lineTo(420,150);x.lineTo(420,300);x.lineTo(0,300);x.closePath();x.fill();}
- return c;
+// ---------- Generator ----------
+const personalities={
+  poetic:[
+    "Imagine a {adj} {theme} filled with {emotion}, where the {object} {verb} beneath the open horizon.",
+    "A moment where {object} {verb} through a {adj} {theme}, carrying the essence of {emotion}.",
+    "Behold the {theme}, {adj} and alive — the {object} {verb} beneath the quiet sky."
+  ],
+  descriptive:[
+    "Visualize a {theme} scene bathed in {emotion}. Place a {object} near the horizon and balance light and space.",
+    "Sketch a {adj} {theme} filled with depth. Let the {object} rest beneath soft tones of {emotion}.",
+    "Compose the {theme} with attention to {emotion}, placing the {object} as your focal point."
+  ]
+};
+const adjectives=["gentle","vivid","dreamy","serene","bold","whimsical","quiet","sparkling"];
+const verbs=["sways","glows","rests","whispers","shines","drifts"];
+const mediums=["oil painting","watercolor","digital illustration","sketch","collage"];
+function refineLine(text){
+  text=text.replace(/into (an|a)? ?(\w+ )?(oil painting|watercolor|digital illustration|sketch|collage) rendered in (\w+)/gi,
+    (m,a,p,med,style)=>`into a ${style.toLowerCase()} ${med}`);
+  text=text.replace(/into realistic/gi,"into a realistic");
+  text=text.replace(/into (oil painting|watercolor|digital illustration|poem|collage|sketch|short story)/gi,
+    (m,med)=>`into a ${med}`);
+  return text;
 }
 
-/* ---------- Gallery Handling ---------- */
-function addToGallery(imgData){
- let gallery=JSON.parse(localStorage.getItem("creativeGallery")||"[]");
- gallery.unshift(imgData);
- if(gallery.length>5)gallery=gallery.slice(0,5);
- localStorage.setItem("creativeGallery",JSON.stringify(gallery));
- renderGallery();
-}
-function renderGallery(){
- const wrap=document.getElementById("gallery");wrap.innerHTML="";
- const gallery=JSON.parse(localStorage.getItem("creativeGallery")||"[]");
- gallery.forEach(src=>{const i=new Image();i.src=src;wrap.appendChild(i);});
-}
-
-/* ---------- Generator ---------- */
+// ---------- Main Scene Generator ----------
 function generateScene(){
- const theme=v("theme"),emo=v("emotion"),obj=v("object"),fav=v("favorites"),style=v("style");
- if(!theme&&!emo&&!obj&&!fav){toast("Enter at least one idea.");return;}
- const per=rand(personalities);
- const favs=fav.split(",").map(f=>f.trim()).filter(f=>f);
- const favWord=favs.length?rand(favs):rand(dict);
- const connector=rand(["under the quiet sky","beneath the open horizon","as daylight drifts"]);
- const verb=rand(["sways","glows","rests","lingers"]);
- let line=`${per.connector} a ${theme||rand(dict)} ${rand(per.adjectives)} in ${emo||"wonder"}, where the ${obj||rand(dict)} ${verb} ${connector}. Translate this feeling into ${rand(mediums)}${style?(" rendered in "+style):""}.`;
- line=refineLine(line);
-
- const palette=rand(palettes);
- const card=document.createElement("div");card.className="card";
- const h4=document.createElement("h4");h4.textContent="Creative Spark";
- const p=document.createElement("p");p.textContent=line;
- const cv=drawCanvas(palette);
-
- /* action buttons */
- const saveBtn=document.createElement("button");saveBtn.textContent="🖼 Save Artwork";
- saveBtn.onclick=()=>{
-   const link=document.createElement("a");
-   link.download="creative-spark.png";
-   link.href=cv.toDataURL("image/png");
-   link.click();
-   addToGallery(cv.toDataURL("image/png"));
-   toast("Artwork saved!");
- };
- const copyBtn=document.createElement("button");copyBtn.textContent="📋 Copy Prompt";
- copyBtn.onclick=()=>{navigator.clipboard.writeText(line);toast("Prompt copied!");};
-
- const actions=document.createElement("div");actions.className="actions-row";
- actions.append(saveBtn,copyBtn);
-
- card.append(h4,p,cv,actions);
- document.getElementById("results").replaceChildren(card);
- document.getElementById("nextBtn").style.display="inline-block";
+  const theme=v('theme'),emotion=v('emotion'),object=v('object'),fav=v('favorites'),style=v('style');
+  if(!theme&&!emotion&&!object&&!fav){toast('Enter at least one idea word.');return;}
+  const tone=document.getElementById("toneMode").value;
+  const complexity=parseInt(document.getElementById("complexity").value);
+  const paletteMode=document.getElementById("paletteMode").value;
+  const palette=random(paletteMode==="day"?dayPalettes:nightPalettes);
+  let template=random(personalities[tone]);
+  let text=template.replace("{theme}",theme||"landscape")
+    .replace("{emotion}",emotion||"peace")
+    .replace("{object}",object||"symbol")
+    .replace("{verb}",random(verbs))
+    .replace("{adj}",random(adjectives));
+  if(complexity>1){
+    text+=" "+random(personalities[tone])
+      .replace("{theme}",theme||"scene")
+      .replace("{emotion}",emotion||"calm")
+      .replace("{object}",object||"figure")
+      .replace("{verb}",random(verbs))
+      .replace("{adj}",random(adjectives));
+  }
+  if(complexity>2){
+    text+=" Translate this feeling into "+random(["a","the"])+" "+random(["realistic","dreamlike","colorful"])+" "+random(mediums)+".";
+  }
+  text=refineLine(text);
+  const cv=drawCanvas(palette,paletteMode);
+  const card=document.createElement("div");card.className="card";
+  const h4=document.createElement("h4");h4.textContent="Creative Spark";
+  const p=document.createElement("p");p.textContent=text;
+  const bar=document.createElement("div");bar.appendChild(cv);
+  card.append(h4,p,bar);
+  document.getElementById("results").replaceChildren(card);
+  document.getElementById("nextBtn").style.display="inline-block";
 }
 
-/* ---------- Events ---------- */
-document.getElementById("beginBtn").onclick=()=>{document.getElementById("home").style.display="none";document.getElementById("generator").style.display="flex";renderGallery();};
+// ---------- Helpers ----------
+function v(id){return document.getElementById(id).value.trim();}
+document.getElementById("beginBtn").onclick=()=>{document.getElementById("home").style.display="none";document.getElementById("generator").style.display="flex";};
 document.getElementById("generateBtn").onclick=generateScene;
 document.getElementById("nextBtn").onclick=generateScene;
-document.getElementById("clearBtn").onclick=()=>{["theme","emotion","object","favorites"].forEach(id=>document.getElementById(id).value="");document.getElementById("results").innerHTML="";document.getElementById("nextBtn").style.display="none";};
+document.getElementById("clearBtn").onclick=()=>{
+  ["theme","emotion","object","favorites"].forEach(id=>document.getElementById(id).value="");
+  document.getElementById("results").innerHTML="";
+  document.getElementById("nextBtn").style.display="none";
+};
 document.getElementById("accessBtn").onclick=()=>{document.body.classList.toggle("high-contrast");toast("Contrast mode toggled");};
 </script>
 </body>
