@@ -159,6 +159,32 @@ function drawCanvas(palette){
   ctx.globalAlpha=1;return c;
 }
 
+  /* ---------- Micro Rewriter ---------- */
+function refineLine(line) {
+  let text = line;
+
+  // Fix adjective–emotion order: "a love gentle in happy" → "a gentle love filled with happiness"
+  text = text.replace(/a (\w+)\s+(\w+)\s+in\s+(\w+)/gi, (m, noun, adj, emo) =>
+    `a ${adj} ${noun} filled with ${emo}`
+  );
+
+  // Replace awkward "beneath boats" or similar with softer endings
+  text = text.replace(/beneath boats/gi, "beneath the drifting sky");
+  text = text.replace(/beneath trees/gi, "beneath their whispering leaves");
+  text = text.replace(/beneath hearts?/gi, "within the heart’s quiet space");
+
+  // Small poetic fixes
+  text = text.replace(/\bcalm in calm\b/gi, "still and serene");
+  text = text.replace(/\bhappy\b/gi, "happiness");
+  text = text.replace(/\blove gentle\b/gi, "gentle love");
+  text = text.replace(/\s{2,}/g, " ");
+
+  // Capitalize and punctuate
+  text = text.charAt(0).toUpperCase() + text.slice(1);
+  if (!/[.!?]$/.test(text)) text += ".";
+
+  return text;
+}
 /* Generate Spark */
 function generateScene() {
   const theme = v('theme'), emotion = v('emotion'), object = v('object'), fav = v('favorites'), style = v('style');
@@ -189,7 +215,7 @@ function generateScene() {
              `where the ${obj} ${verb} ${connector}. ` +
              `Translate this feeling into ${randomChoice(mediums)}${style ? " rendered in " + style : ""}.`;
 
-  line = cleanSentence(line);
+  line = cleanSentence(refineLine(line));
 
   const palette = randomChoice(colorPalettes);
   const card = document.createElement('div'); card.className = 'card';
