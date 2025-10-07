@@ -1,6 +1,24 @@
-# 🎨 Creative Spark — Sovereign Edition  
-*Designed by Archaemenes Academy · 2025*
+Creative Spark v1.0 — Sovereign Horizon Edition
 
+Filename: creative-spark.html
+
+Fully self-contained (no external calls or dependencies)
+
+Perlin-noise landscape painter (sky + land + symbol layers)
+
+Day/Night palette toggle
+
+Poetic / Descriptive mode switch
+
+Complexity slider (1–3 sentences)
+
+Grammar & structure refinement
+
+Save Artwork (PNG), Copy Prompt, Gallery of 5
+
+Accessibility toggle
+
+Footer: Creative Spark v1.0 — Designed by Archaemenes Academy 2025
 An interactive, offline-ready **art and idea generator** that helps students and artists ignite new creative projects.  
 Built in **vanilla HTML + CSS + JavaScript**, it runs entirely in the browser — no APIs, no logins, and no paywalls.  
 Perfect for classrooms, makers, and sovereign learners.
