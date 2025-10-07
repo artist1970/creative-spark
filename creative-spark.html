@@ -223,7 +223,31 @@ ctx.globalAlpha = 1;
   canvas.className='generated-img';
   return canvas;
 }
+let colorPalettes = [];
 
+async function loadImageBank() {
+  const bankURL = "https://raw.githubusercontent.com/YOUR_USERNAME/YOUR_REPO_NAME/main/bank/palettes.json";
+
+  try {
+    const response = await fetch(bankURL);
+    if (!response.ok) throw new Error("Network response was not ok");
+    colorPalettes = await response.json();
+    toast(`🎨 Loaded ${colorPalettes.length} palettes from bank`);
+  } catch (error) {
+    console.warn("⚠️ Could not load image bank, using defaults:", error);
+    colorPalettes = [
+      {
+        name: "Fallback",
+        image: "",
+        colors: ["#FF6E3A", "#FF8A59", "#FFD1A4", "#FFE1C6", "#2C1B17"]
+      }
+    ];
+    toast("⚠️ Using default palette set");
+  }
+}
+
+// Auto-load when app starts
+window.addEventListener("DOMContentLoaded", loadImageBank);
 /* ---------- Core Generation ---------- */
 function generateScene(){
   const theme=v('theme'),emotion=v('emotion'),object=v('object'),fav=v('favorites'),style=v('style'),dict=DEFAULT_DICT;
@@ -239,6 +263,15 @@ function generateScene(){
   `beneath ${favWord || "a drifting sky"}. ` +
   `Translate this feeling into a ${randomChoice(mediums)}${style ? " rendered in " + style : ""}.`;
   const palette=randomChoice(colorPalettes);
+  if (palette.image) {
+  const img = document.createElement("img");
+  img.src = `https://raw.githubusercontent.com/YOUR_USERNAME/YOUR_REPO_NAME/main/bank/${palette.image}`;
+  img.alt = palette.name;
+  img.style.width = "100%";
+  img.style.borderRadius = "14px";
+  img.style.marginTop = "10px";
+  card.appendChild(img);
+}
 
   const card=document.createElement('div');card.className='card';
   const h4=document.createElement('h4');h4.textContent='Creative Spark';
