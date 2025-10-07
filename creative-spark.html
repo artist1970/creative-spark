@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Creative Spark v2.1 — Sovereign Edition</title>
+<title>Creative Spark v3.1 — Sovereign Edition</title>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 <style>
 :root{
@@ -15,58 +15,56 @@
   --font:"Poppins",system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial;
 }
 *{box-sizing:border-box}
-body{margin:0;background:var(--bg-black);color:var(--muted-white);font-family:var(--font);overflow-x:hidden}
+body{margin:0;background:var(--bg-black);color:var(--muted-white);font-family:var(--font);overflow-x:hidden;font-size:22px}
 
-/* ---------- Layout ---------- */
+/* Layout */
 .app{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:40px 20px;position:relative;overflow:hidden}
 .bg-art{position:absolute;inset:0;background:url('https://via.placeholder.com/1600x900/000/111?text=Creative+Spark') center/cover no-repeat;opacity:.08;filter:blur(3px);pointer-events:none;z-index:0}
 .frame{z-index:10;width:100%;max-width:980px;display:flex;flex-direction:column;align-items:center;gap:32px}
 
-/* ---------- Home ---------- */
+/* Home */
 .home{text-align:center;padding:28px}
 .title{font-size:clamp(40px,6vw,56px);font-weight:800;letter-spacing:-.01em;text-shadow:0 0 24px rgba(255,110,58,.3)}
 .tagline{font-size:clamp(22px,2.5vw,26px);opacity:.9;margin-top:12px;animation:fadeShimmer 5s infinite ease-in-out}
 @keyframes fadeShimmer{0%,100%{opacity:.6}50%{opacity:1}}
-.begin-btn{margin-top:30px;border:none;background:linear-gradient(180deg,var(--sunset),var(--accent));color:#fff;
-padding:28px 70px;border-radius:999px;font-size:clamp(26px,3vw,30px);font-weight:700;cursor:pointer;
-box-shadow:0 0 40px rgba(255,110,58,.4);transition:all .25s ease}
+.begin-btn{margin-top:30px;border:none;background:linear-gradient(180deg,var(--sunset),var(--accent));color:#fff;padding:28px 70px;border-radius:999px;font-size:clamp(26px,3vw,30px);font-weight:700;cursor:pointer;box-shadow:0 0 40px rgba(255,110,58,.4);transition:all .25s ease}
 .begin-btn:hover{transform:scale(1.05);box-shadow:0 0 60px rgba(255,110,58,.6)}
 .footer-note{margin-top:60px;font-size:16px;color:rgba(255,255,255,.4)}
 
-/* ---------- Generator ---------- */
+/* Generator */
 .generator{display:none;width:100%;padding:36px;border-radius:var(--radius);
 background:linear-gradient(180deg,rgba(255,255,255,.03),rgba(255,255,255,.01));
-box-shadow:0 8px 34px rgba(0,0,0,.6);flex-direction:column;gap:20px;font-size:22px}
-label{font-size:22px;font-weight:600;color:rgba(255,255,255,.8)}
+box-shadow:0 8px 34px rgba(0,0,0,.6);flex-direction:column;gap:20px}
+label{font-size:24px;font-weight:600;color:rgba(255,255,255,.8)}
 input[type=text],select{font-size:26px;padding:18px;border-radius:14px;border:2px solid rgba(255,255,255,.08);
 background:transparent;color:var(--muted-white);outline:none;min-height:60px;width:100%}
 input:focus,select:focus{border-color:var(--accent)}
 .inputs{display:grid;gap:18px}
 .generate-row{display:flex;gap:14px;align-items:center;flex-wrap:wrap}
-button.generate-btn{background:linear-gradient(180deg,var(--sunset),var(--accent));color:white;
-padding:16px 28px;border:none;border-radius:16px;font-weight:700;font-size:22px;cursor:pointer}
-button.next-btn{background:#222;color:white;border:1px solid rgba(255,255,255,.2);padding:16px 28px;border-radius:16px;font-size:22px;cursor:pointer}
+button.generate-btn,button.next-btn{background:linear-gradient(180deg,var(--sunset),var(--accent));color:white;
+padding:18px 32px;border:none;border-radius:16px;font-weight:700;font-size:24px;cursor:pointer}
+button.next-btn{background:#333;border:1px solid rgba(255,255,255,.2)}
 .clear-btn{background:transparent;color:rgba(255,255,255,.7);border:1px solid rgba(255,255,255,.1);
 padding:14px 20px;border-radius:14px;font-size:20px;cursor:pointer}
 .results{margin-top:16px;display:grid;gap:22px}
 
-/* ---------- Cards ---------- */
+/* Cards */
 .card{background:linear-gradient(180deg,rgba(255,255,255,.02),rgba(255,255,255,.01));
 border-radius:22px;padding:30px;display:flex;flex-direction:column;gap:18px;
 border:1px solid rgba(255,255,255,.05);box-shadow:0 8px 34px rgba(0,0,0,.7);animation:fadeIn .6s ease both}
 @keyframes fadeIn{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
-.card h4{margin:0;font-size:26px;font-weight:700}
-.card p{margin:0;font-size:22px;line-height:1.4}
-.color-bar{display:flex;margin-top:10px;border-radius:10px;overflow-x:auto;height:28px}
+.card h4{margin:0;font-size:28px;font-weight:700}
+.card p{margin:0;font-size:24px;line-height:1.5}
+.color-bar{display:flex;margin-top:10px;border-radius:10px;overflow-x:auto;height:32px}
 .color-swatch{flex:0 0 60px;height:100%;cursor:grab;border-right:2px solid rgba(0,0,0,.1)}
 
-/* ---------- Toast ---------- */
+/* Toast */
 .toast{position:fixed;bottom:30px;left:50%;transform:translateX(-50%);
 background:rgba(0,0,0,.85);color:#fff;padding:16px 26px;border-radius:10px;
 font-size:20px;opacity:0;pointer-events:none;transition:opacity .4s}
 .toast.show{opacity:1}
 
-/* ---------- Accessibility toggle ---------- */
+/* Accessibility */
 .access-toggle{position:fixed;bottom:18px;right:18px;z-index:40;background:#222;
 color:#fff;border:1px solid rgba(255,255,255,.2);border-radius:12px;padding:12px 16px;cursor:pointer}
 .high-contrast body{background:#fff;color:#000}
@@ -82,16 +80,16 @@ color:#fff;border:1px solid rgba(255,255,255,.2);border-radius:12px;padding:12px
       <div class="title">Creative Spark</div>
       <div class="tagline">Every story begins with a spark.</div>
       <button id="beginBtn" class="begin-btn">Begin</button>
-      <div class="footer-note">Designed by Archaemenes Academy 2025</div>
+      <div class="footer-note">Designed by Archaemenes Academy · 2025</div>
     </section>
 
     <section id="generator" class="generator">
       <div class="inputs">
-        <label>Theme / Concept <input type="text" id="theme" placeholder="e.g. western"></label>
-        <label>Emotion / Mood <input type="text" id="emotion" placeholder="e.g. nostalgic"></label>
-        <label>Object / Symbol <input type="text" id="object" placeholder="e.g. fences"></label>
+        <label>Theme / Concept <input type="text" id="theme" placeholder="e.g. forest, dream, ocean"></label>
+        <label>Emotion / Mood <input type="text" id="emotion" placeholder="e.g. calm, mysterious, joyful"></label>
+        <label>Object / Symbol <input type="text" id="object" placeholder="e.g. moon, flame, bridge"></label>
         <label>Three Favorites (comma-separated)
-          <input type="text" id="favorites" placeholder="e.g. horses, sunsets, dogs">
+          <input type="text" id="favorites" placeholder="e.g. rivers, stars, memories">
         </label>
         <label>Artistic Style
           <select id="style">
@@ -122,21 +120,14 @@ color:#fff;border:1px solid rgba(255,255,255,.2);border-radius:12px;padding:12px
 <div class="toast" id="toast"></div>
 <button class="access-toggle" id="accessBtn">High Contrast ⇄</button>
 
-<script>
-/* ---------- Data ---------- */
-const colorPalettes=[
+<!-- import language-helper -->
+<script type="module">
+import { cleanSentence } from "./language-helper.js";
+
+const colorPalettes = [
   {name:"Sunset Serenity",colors:["#FF6E3A","#FF8A59","#FFD1A4","#FFE1C6","#2C1B17"]},
-  {name:"Forest Whisper",colors:["#2E4E1F","#6B8E23","#A9C985","#D4EAC7","#E5F3DB"]},
   {name:"Dreamy Pastels",colors:["#FADADD","#FFD9E8","#C9E4FF","#E2FFE2","#FFF0B3"]},
-  {name:"Bold Contrast",colors:["#FF3D00","#00FFD1","#FFEB00","#2C003E","#FF6E3A"]},
-  {name:"Ocean Depths",colors:["#012E40","#027368","#038C73","#A9D9D0","#F2E7DC"]},
-  {name:"Crimson Muse",colors:["#3C0919","#6B0F1A","#A4202A","#E85D75","#F7C5CC"]},
-  {name:"Golden Hour",colors:["#FFB200","#FFD56B","#FFECA1","#FFF8DC","#D49A6A"]},
-  {name:"Aurora Drift",colors:["#0B132B","#1C2541","#3A506B","#5BC0BE","#6FFFE9"]},
-  {name:"Mystic Violet",colors:["#2E003E","#512E5F","#713B84","#9B72AA","#C8A4D4"]},
-  {name:"Earthen Clay",colors:["#3E2723","#5D4037","#8D6E63","#BCAAA4","#D7CCC8"]},
-  {name:"Skyline Neon",colors:["#00FFFF","#FF00FF","#FF9900","#33FF33","#FFFF33"]},
-  {name:"Paper Ink",colors:["#111","#333","#555","#DDD","#FFF"]}
+  {name:"Forest Whisper",colors:["#2E4E1F","#6B8E23","#A9C985","#D4EAC7","#E5F3DB"]}
 ];
 const personalities=[
   {name:"Playful",adjectives:["whimsical","sparkling","curious","bright","breezy"],verbs:["frolics","dances","giggles","twirls","bounces"],connector:"Imagine"},
@@ -146,163 +137,57 @@ const personalities=[
 const mediums=["oil painting","watercolor","digital illustration","vector art","short story","poem","sketch","collage"];
 const DEFAULT_DICT=["sunsets","fences","peace","horses","dogs","rivers","mountains","flowers","trees","boats"];
 
-/* ---------- Helpers ---------- */
 const randomChoice=a=>a[Math.floor(Math.random()*a.length)];
 const v=id=>document.getElementById(id).value.trim();
 function toast(msg){const t=document.getElementById('toast');t.textContent=msg;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),2600);}
 
-/* ---------- Palette Bar (Draggable) ---------- */
-function renderPaletteDraggable(colors){
-  const bar=document.createElement('div');bar.className='color-bar';
-  colors.forEach(c=>{
-    const sw=document.createElement('div');sw.className='color-swatch';sw.style.background=c;
-    sw.draggable=true;
-    sw.addEventListener('dragstart',e=>e.dataTransfer.setData('text/plain',c));
-    bar.appendChild(sw);
-  });
-  bar.addEventListener('dragover',e=>e.preventDefault());
-  bar.addEventListener('drop',e=>{
-    e.preventDefault();
-    const from=e.dataTransfer.getData('text/plain');
-    const target=e.target.closest('.color-swatch');
-    if(target){
-      const cur=[...bar.children].map(c=>c.style.background);
-      const idx=[...bar.children].indexOf(target);
-      const newArr=cur.filter(x=>x!==from);
-      newArr.splice(idx,0,from);
-      bar.replaceChildren(...newArr.map(c=>{
-        const n=document.createElement('div');n.className='color-swatch';n.style.background=c;n.draggable=true;return n;
-      }));
-    }
-  });
-  return bar;
-}
-
-/* ---------- Procedural Canvas Generator ---------- */
+/* Canvas */
 function drawCanvas(palette){
-  const canvas=document.createElement("canvas");
-  canvas.width=420;canvas.height=300;
-  const ctx=canvas.getContext("2d");
-
-  // gradient background
+  const c=document.createElement("canvas");
+  c.width=420;c.height=300;const ctx=c.getContext("2d");
   const grad=ctx.createLinearGradient(0,0,420,300);
-  grad.addColorStop(0,palette.colors[0]);
-  grad.addColorStop(1,palette.colors[2]);
+  grad.addColorStop(0,palette.colors[0]);grad.addColorStop(1,palette.colors[2]);
   ctx.fillStyle=grad;ctx.fillRect(0,0,420,300);
-
-  // layered brush strokes
-  for (let i=0;i<120;i++){
-  ctx.globalAlpha = 0.03 + Math.random() * 0.1;
-  ctx.fillStyle = palette.colors[Math.floor(Math.random() * palette.colors.length)];
-
-  const shape = Math.random();
-  const x = Math.random() * 420;
-  const y = Math.random() * 300;
-
-  if (shape < 0.4) {          // circles
-    const r = 10 + Math.random() * 60;
-    ctx.beginPath();
-    ctx.arc(x, y, r, 0, Math.PI * 2);
-    ctx.fill();
-  } else if (shape < 0.7) {   // rectangles
-    const w = 20 + Math.random() * 80;
-    const h = 20 + Math.random() * 80;
-    ctx.fillRect(x, y, w, h);
-  } else {                    // triangles
-    ctx.beginPath();
-    ctx.moveTo(x, y);
-    ctx.lineTo(x + 40 * Math.random(), y + 60 * Math.random());
-    ctx.lineTo(x - 40 * Math.random(), y + 40 * Math.random());
-    ctx.closePath();
-    ctx.fill();
+  for(let i=0;i<100;i++){
+    ctx.globalAlpha=0.03+Math.random()*0.1;
+    ctx.fillStyle=palette.colors[Math.floor(Math.random()*palette.colors.length)];
+    const shape=Math.random(),x=Math.random()*420,y=Math.random()*300;
+    if(shape<0.4){const r=10+Math.random()*60;ctx.beginPath();ctx.arc(x,y,r,0,Math.PI*2);ctx.fill();}
+    else if(shape<0.7){const w=20+Math.random()*80,h=20+Math.random()*80;ctx.fillRect(x,y,w,h);}
+    else{ctx.beginPath();ctx.moveTo(x,y);ctx.lineTo(x+40*Math.random(),y+60*Math.random());ctx.lineTo(x-40*Math.random(),y+40*Math.random());ctx.closePath();ctx.fill();}
   }
-}
-ctx.globalAlpha = 1;
-  }
-  ctx.globalAlpha=1;
-  canvas.className='generated-img';
-  return canvas;
-}
-let colorPalettes = [];
-
-async function loadImageBank() {
-  const bankURL = "https://raw.githubusercontent.com/YOUR_USERNAME/YOUR_REPO_NAME/main/bank/palettes.json";
-
-  try {
-    const response = await fetch(bankURL);
-    if (!response.ok) throw new Error("Network response was not ok");
-    colorPalettes = await response.json();
-    toast(`🎨 Loaded ${colorPalettes.length} palettes from bank`);
-  } catch (error) {
-    console.warn("⚠️ Could not load image bank, using defaults:", error);
-    colorPalettes = [
-      {
-        name: "Fallback",
-        image: "",
-        colors: ["#FF6E3A", "#FF8A59", "#FFD1A4", "#FFE1C6", "#2C1B17"]
-      }
-    ];
-    toast("⚠️ Using default palette set");
-  }
+  ctx.globalAlpha=1;return c;
 }
 
-// Auto-load when app starts
-window.addEventListener("DOMContentLoaded", loadImageBank);
-/* ---------- Core Generation ---------- */
+/* Generate Spark */
 function generateScene(){
-  const theme=v('theme'),emotion=v('emotion'),object=v('object'),fav=v('favorites'),style=v('style'),dict=DEFAULT_DICT;
+  const theme=v('theme'),emotion=v('emotion'),object=v('object'),fav=v('favorites'),style=v('style');
   if(!theme&&!emotion&&!object&&!fav){toast('Enter at least one idea word.');return;}
   const personality=randomChoice(personalities);
   const favs=fav.split(',').map(f=>f.trim()).filter(f=>f);
-  const favWord=favs.length?randomChoice(favs):randomChoice(dict);
-  const obj=object||randomChoice(dict);
- const sentence =
-  `${personality.connector} a ${theme || randomChoice(dict)} ` +
-  `${randomChoice(personality.adjectives)} in ${emotion || "quiet wonder"}, ` +
-  `where the ${obj || randomChoice(dict)} ${randomChoice(personality.verbs)} ` +
-  `beneath ${favWord || "a drifting sky"}. ` +
-  `Translate this feeling into a ${randomChoice(mediums)}${style ? " rendered in " + style : ""}.`;
-  const palette=randomChoice(colorPalettes);
-  if (palette.image) {
-  const img = document.createElement("img");
-  img.src = `https://raw.githubusercontent.com/YOUR_USERNAME/YOUR_REPO_NAME/main/bank/${palette.image}`;
-  img.alt = palette.name;
-  img.style.width = "100%";
-  img.style.borderRadius = "14px";
-  img.style.marginTop = "10px";
-  card.appendChild(img);
-}
+  const favWord=favs.length?randomChoice(favs):randomChoice(DEFAULT_DICT);
+  const obj=object||randomChoice(DEFAULT_DICT);
+  let line=`${personality.connector} a ${theme||randomChoice(DEFAULT_DICT)} ${randomChoice(personality.adjectives)} in ${emotion||"quiet wonder"}, where the ${obj} ${randomChoice(personality.verbs)} beneath ${favWord||"a drifting sky"}. Translate this into a ${randomChoice(mediums)}${style?(" rendered in "+style):""}`;
+  line=cleanSentence(line);
 
+  const palette=randomChoice(colorPalettes);
   const card=document.createElement('div');card.className='card';
   const h4=document.createElement('h4');h4.textContent='Creative Spark';
   const p=document.createElement('p');p.textContent=line;
-  const bar=renderPaletteDraggable(palette.colors);
+  const bar=document.createElement('div');bar.className='color-bar';
+  palette.colors.forEach(c=>{const sw=document.createElement('div');sw.className='color-swatch';sw.style.background=c;bar.appendChild(sw);});
   const cv=drawCanvas(palette);
   card.append(h4,p,bar,cv);
-
-  const results=document.getElementById('results');
-  results.replaceChildren(card);
+  document.getElementById('results').replaceChildren(card);
   document.getElementById('nextBtn').style.display='inline-block';
 }
 
-/* ---------- Events ---------- */
-document.getElementById('beginBtn').onclick=()=>{
-  document.getElementById('home').style.display='none';
-  document.getElementById('generator').style.display='flex';
-};
+/* Events */
+document.getElementById('beginBtn').onclick=()=>{document.getElementById('home').style.display='none';document.getElementById('generator').style.display='flex';};
 document.getElementById('generateBtn').onclick=()=>generateScene();
 document.getElementById('nextBtn').onclick=()=>generateScene();
-document.getElementById('clearBtn').onclick=()=>{
-  ['theme','emotion','object','favorites'].forEach(id=>document.getElementById(id).value='');
-  document.getElementById('results').innerHTML='';
-  document.getElementById('nextBtn').style.display='none';
-};
-
-/* ---------- Accessibility Toggle ---------- */
-document.getElementById('accessBtn').onclick=()=>{
-  document.body.classList.toggle('high-contrast');
-  toast('Contrast mode toggled');
-};
+document.getElementById('clearBtn').onclick=()=>{['theme','emotion','object','favorites'].forEach(id=>document.getElementById(id).value='');document.getElementById('results').innerHTML='';document.getElementById('nextBtn').style.display='none';};
+document.getElementById('accessBtn').onclick=()=>{document.body.classList.toggle('high-contrast');toast('Contrast mode toggled');};
 </script>
 </body>
 </html>
