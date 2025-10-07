@@ -55,4 +55,25 @@ Creative Spark is part of the **Archaemenes Academy / PLERA** learning ecosystem
 a sovereign, ethical platform for education, art, and imagination.  
 All source code is open for non-commercial educational use.
 
+---
+
+## 📜 License
+
+**Creative Spark — Sovereign Edition** is released under the  
+**Creative Commons Attribution–NonCommercial 4.0 International (CC BY-NC 4.0)** license.
+
+You’re free to:
+
+- **Share** — copy and redistribute the material in any medium or format.  
+- **Adapt** — remix, transform, and build upon the material.
+
+Under the following terms:
+
+- **Attribution** — You must give appropriate credit to *Archaemenes Academy* and link back to this repository.  
+- **NonCommercial** — You may not use the material for commercial purposes.  
+- **No Additional Restrictions** — You may not apply legal terms or technological measures that legally restrict others from doing anything the license permits.
+
+Full license text: [https://creativecommons.org/licenses/by-nc/4.0/](https://creativecommons.org/licenses/by-nc/4.0/)
+
+
 © 2025 Archaemenes Academy · All Rights Reserved
