@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Creative Spark v1.0 — Sovereign Horizon Edition</title>
+<title>Creative Spark v1.1 — Sovereign Horizon Edition</title>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 <style>
 :root {
@@ -53,7 +53,7 @@ button.next-btn{background:#333;border:1px solid rgba(255,255,255,.2);}
       <div class="title">Creative Spark</div>
       <div class="tagline">Every story begins with a spark.<br>Paint with feeling. Dream with light.</div>
       <button id="beginBtn" class="begin-btn">Begin</button>
-      <div class="footer-note">Creative Spark v1.0 — Designed by Archaemenes Academy 2025</div>
+      <div class="footer-note">Creative Spark v1.1 — Designed by Archaemenes Academy 2025</div>
     </section>
 
     <section id="generator" class="generator">
@@ -79,27 +79,21 @@ button.next-btn{background:#333;border:1px solid rgba(255,255,255,.2);}
       </div>
 
       <div class="controls">
-        <div>
-          <label>🌗 Palette:
-            <select id="paletteMode">
-              <option value="day">Daylight</option>
-              <option value="night">Night</option>
-            </select>
-          </label>
-        </div>
-        <div>
-          <label>✍️ Mode:
-            <select id="toneMode">
-              <option value="poetic">Poetic</option>
-              <option value="descriptive">Descriptive</option>
-            </select>
-          </label>
-        </div>
-        <div>
-          <label>📏 Complexity:
-            <input type="range" id="complexity" min="1" max="3" step="1" value="1">
-          </label>
-        </div>
+        <div><label>🌗 Palette:
+          <select id="paletteMode">
+            <option value="day">Daylight</option>
+            <option value="night">Night</option>
+          </select>
+        </label></div>
+        <div><label>✍️ Mode:
+          <select id="toneMode">
+            <option value="poetic">Poetic</option>
+            <option value="descriptive">Descriptive</option>
+          </select>
+        </label></div>
+        <div><label>📏 Complexity:
+          <input type="range" id="complexity" min="1" max="3" step="1" value="1">
+        </label></div>
       </div>
 
       <div class="generate-row">
@@ -117,22 +111,59 @@ button.next-btn{background:#333;border:1px solid rgba(255,255,255,.2);}
 <button class="access-toggle" id="accessBtn">High Contrast ⇄</button>
 
 <script>
-// ---------- Helper ----------
+/* ============================
+   Utility + Toast
+   ============================ */
 function toast(msg){const t=document.getElementById('toast');t.textContent=msg;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),2600);}
 const random=a=>a[Math.floor(Math.random()*a.length)];
+function v(id){return document.getElementById(id).value.trim();}
 
-// ---------- Perlin Noise ----------
+/* ============================
+   Load Dictionary JSON
+   ============================ */
+let DICT=null;
+async function loadCreativeDictionary(){
+  const CACHE_KEY="creativeSparkDictionaryV2";
+  try{
+    const res=await fetch("./dictionary/creative_dictionary_v2.json",{cache:"no-store"});
+    if(res.ok){
+      DICT=await res.json();
+      localStorage.setItem(CACHE_KEY,JSON.stringify(DICT));
+      toast(`📚 Dictionary loaded (${DICT.adjectives.length} adjectives, ${DICT.verbs.length} verbs)`);
+      return;
+    }
+  }catch(e){console.warn("⚠️ Dictionary fetch failed:",e);}
+  const cached=localStorage.getItem(CACHE_KEY);
+  if(cached){
+    DICT=JSON.parse(cached);
+    toast("📦 Loaded dictionary from cache");
+  }else{
+    toast("⚠️ Using built-in fallback dictionary");
+    DICT={
+      adjectives:["gentle","vivid","dreamy"],
+      verbs:["sways","glows","rests"],
+      emotions:["joy","peace","wonder"],
+      mediums:["oil painting","watercolor","digital illustration"],
+      themes:["landscape","sunset","forest"],
+      symbols:["rose","moon","star"],
+      personalities:{
+        poetic:["Imagine a {adj} {theme} filled with {emotion}, where the {object} {verb} beneath the open horizon."],
+        descriptive:["Visualize a {theme} scene bathed in {emotion}. Place a {object} near the horizon."]
+      }
+    };
+  }
+}
+
+/* ============================
+   Painter + Gradients
+   ============================ */
 function perlin(x){return (Math.sin(x*2.1)+Math.sin(x*1.3)+Math.sin(x*3.7))/3;}
-
-// ---------- Palettes ----------
 const dayPalettes=[["#FF6E3A","#FFD1A4","#FFE1C6","#2C1B17","#FFF8DC"],["#6B8E23","#A9C985","#E5F3DB","#FFF0B3","#FFD56B"]];
 const nightPalettes=[["#0B132B","#1C2541","#3A506B","#5BC0BE","#CDEDF6"],["#1B1B2F","#162447","#1F4068","#1B9AAA","#E43F5A"]];
-
-// ---------- Generate Landscape ----------
 function drawCanvas(palette,mode){
   const canvas=document.createElement("canvas");canvas.width=420;canvas.height=300;
   const ctx=canvas.getContext("2d");
-  let grad=ctx.createLinearGradient(0,0,0,300);
+  const grad=ctx.createLinearGradient(0,0,0,300);
   grad.addColorStop(0,palette[0]);grad.addColorStop(1,palette[2]);
   ctx.fillStyle=grad;ctx.fillRect(0,0,420,300);
   ctx.beginPath();
@@ -142,7 +173,7 @@ function drawCanvas(palette,mode){
   }
   ctx.lineTo(420,300);ctx.lineTo(0,300);ctx.closePath();
   ctx.fillStyle=palette[3];ctx.fill();
-  ctx.globalAlpha=0.2;
+  ctx.globalAlpha=0.25;
   for(let i=0;i<6;i++){
     const cx=Math.random()*420,cy=Math.random()*100,r=20+Math.random()*40;
     ctx.beginPath();ctx.arc(cx,cy,r,0,Math.PI*2);ctx.fillStyle=palette[4];ctx.fill();
@@ -153,22 +184,9 @@ function drawCanvas(palette,mode){
   return canvas;
 }
 
-// ---------- Generator ----------
-const personalities={
-  poetic:[
-    "Imagine a {adj} {theme} filled with {emotion}, where the {object} {verb} beneath the open horizon.",
-    "A moment where {object} {verb} through a {adj} {theme}, carrying the essence of {emotion}.",
-    "Behold the {theme}, {adj} and alive — the {object} {verb} beneath the quiet sky."
-  ],
-  descriptive:[
-    "Visualize a {theme} scene bathed in {emotion}. Place a {object} near the horizon and balance light and space.",
-    "Sketch a {adj} {theme} filled with depth. Let the {object} rest beneath soft tones of {emotion}.",
-    "Compose the {theme} with attention to {emotion}, placing the {object} as your focal point."
-  ]
-};
-const adjectives=["gentle","vivid","dreamy","serene","bold","whimsical","quiet","sparkling"];
-const verbs=["sways","glows","rests","whispers","shines","drifts"];
-const mediums=["oil painting","watercolor","digital illustration","sketch","collage"];
+/* ============================
+   Language Generator
+   ============================ */
 function refineLine(text){
   text=text.replace(/into (an|a)? ?(\w+ )?(oil painting|watercolor|digital illustration|sketch|collage) rendered in (\w+)/gi,
     (m,a,p,med,style)=>`into a ${style.toLowerCase()} ${med}`);
@@ -178,53 +196,53 @@ function refineLine(text){
   return text;
 }
 
-// ---------- Main Scene Generator ----------
 function generateScene(){
-  const theme=v('theme'),emotion=v('emotion'),object=v('object'),fav=v('favorites'),style=v('style');
-  if(!theme&&!emotion&&!object&&!fav){toast('Enter at least one idea word.');return;}
+  if(!DICT){toast("Dictionary not loaded yet.");return;}
+  const theme=v('theme')||random(DICT.themes);
+  const emotion=v('emotion')||random(DICT.emotions);
+  const object=v('object')||random(DICT.symbols);
   const tone=document.getElementById("toneMode").value;
   const complexity=parseInt(document.getElementById("complexity").value);
   const paletteMode=document.getElementById("paletteMode").value;
   const palette=random(paletteMode==="day"?dayPalettes:nightPalettes);
-  let template=random(personalities[tone]);
-  let text=template.replace("{theme}",theme||"landscape")
-    .replace("{emotion}",emotion||"peace")
-    .replace("{object}",object||"symbol")
-    .replace("{verb}",random(verbs))
-    .replace("{adj}",random(adjectives));
+  let line=random(DICT.personalities[tone])
+    .replace("{theme}",theme)
+    .replace("{emotion}",emotion)
+    .replace("{object}",object)
+    .replace("{adj}",random(DICT.adjectives))
+    .replace("{verb}",random(DICT.verbs));
   if(complexity>1){
-    text+=" "+random(personalities[tone])
-      .replace("{theme}",theme||"scene")
-      .replace("{emotion}",emotion||"calm")
-      .replace("{object}",object||"figure")
-      .replace("{verb}",random(verbs))
-      .replace("{adj}",random(adjectives));
+    const second=random(DICT.personalities[tone])
+      .replace("{theme}",random(DICT.themes))
+      .replace("{emotion}",random(DICT.emotions))
+      .replace("{object}",random(DICT.symbols))
+      .replace("{adj}",random(DICT.adjectives))
+      .replace("{verb}",random(DICT.verbs));
+    line+=" "+second;
   }
   if(complexity>2){
-    text+=" Translate this feeling into "+random(["a","the"])+" "+random(["realistic","dreamlike","colorful"])+" "+random(mediums)+".";
+    line+=" Translate this feeling into a "+random(["realistic","dreamlike","colorful"])+" "+random(DICT.mediums)+".";
   }
-  text=refineLine(text);
+  line=refineLine(line);
   const cv=drawCanvas(palette,paletteMode);
   const card=document.createElement("div");card.className="card";
   const h4=document.createElement("h4");h4.textContent="Creative Spark";
-  const p=document.createElement("p");p.textContent=text;
+  const p=document.createElement("p");p.textContent=line;
   const bar=document.createElement("div");bar.appendChild(cv);
   card.append(h4,p,bar);
   document.getElementById("results").replaceChildren(card);
   document.getElementById("nextBtn").style.display="inline-block";
 }
 
-// ---------- Helpers ----------
-function v(id){return document.getElementById(id).value.trim();}
+/* ============================
+   Event Logic
+   ============================ */
 document.getElementById("beginBtn").onclick=()=>{document.getElementById("home").style.display="none";document.getElementById("generator").style.display="flex";};
 document.getElementById("generateBtn").onclick=generateScene;
 document.getElementById("nextBtn").onclick=generateScene;
-document.getElementById("clearBtn").onclick=()=>{
-  ["theme","emotion","object","favorites"].forEach(id=>document.getElementById(id).value="");
-  document.getElementById("results").innerHTML="";
-  document.getElementById("nextBtn").style.display="none";
-};
+document.getElementById("clearBtn").onclick=()=>{["theme","emotion","object","favorites"].forEach(id=>document.getElementById(id).value="");document.getElementById("results").innerHTML="";document.getElementById("nextBtn").style.display="none";};
 document.getElementById("accessBtn").onclick=()=>{document.body.classList.toggle("high-contrast");toast("Contrast mode toggled");};
+window.addEventListener("DOMContentLoaded",loadCreativeDictionary);
 </script>
 </body>
 </html>
