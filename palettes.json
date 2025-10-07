@@ -1,0 +1,98 @@
+[
+  {
+    "name": "Sunset Serenity",
+    "colors": ["#FF6E3A", "#FF8A59", "#FFD1A4", "#FFE1C6", "#2C1B17"]
+  },
+  {
+    "name": "Forest Whisper",
+    "colors": ["#2E4E1F", "#6B8E23", "#A9C985", "#D4EAC7", "#E5F3DB"]
+  },
+  {
+    "name": "Dreamy Pastels",
+    "colors": ["#FADADD", "#FFD9E8", "#C9E4FF", "#E2FFE2", "#FFF0B3"]
+  },
+  {
+    "name": "Golden Hour",
+    "colors": ["#FFB200", "#FFD56B", "#FFECA1", "#FFF8DC", "#D49A6A"]
+  },
+  {
+    "name": "Ocean Depths",
+    "colors": ["#012E40", "#027368", "#038C73", "#A9D9D0", "#F2E7DC"]
+  },
+  {
+    "name": "Crimson Muse",
+    "colors": ["#3C0919", "#6B0F1A", "#A4202A", "#E85D75", "#F7C5CC"]
+  },
+  {
+    "name": "Aurora Drift",
+    "colors": ["#0B132B", "#1C2541", "#3A506B", "#5BC0BE", "#6FFFE9"]
+  },
+  {
+    "name": "Mystic Violet",
+    "colors": ["#2E003E", "#512E5F", "#713B84", "#9B72AA", "#C8A4D4"]
+  },
+  {
+    "name": "Earthen Clay",
+    "colors": ["#3E2723", "#5D4037", "#8D6E63", "#BCAAA4", "#D7CCC8"]
+  },
+  {
+    "name": "Skyline Neon",
+    "colors": ["#00FFFF", "#FF00FF", "#FF9900", "#33FF33", "#FFFF33"]
+  },
+  {
+    "name": "Paper Ink",
+    "colors": ["#111", "#333", "#555", "#DDD", "#FFF"]
+  },
+  {
+    "name": "Arctic Dawn",
+    "colors": ["#D9F7FF", "#A0E9FF", "#72DDF7", "#1E96FC", "#0B3954"]
+  },
+  {
+    "name": "Lush Meadow",
+    "colors": ["#2D572C", "#4C9A2A", "#86C232", "#B8E994", "#E5F9C5"]
+  },
+  {
+    "name": "Twilight Rose",
+    "colors": ["#F2B5D4", "#D68FB0", "#9B6A97", "#59405C", "#2F1B41"]
+  },
+  {
+    "name": "Sahara Mirage",
+    "colors": ["#C97C5D", "#DBA159", "#EDD382", "#F7F0F5", "#A3C4BC"]
+  },
+  {
+    "name": "Midnight Bloom",
+    "colors": ["#011638", "#2E294E", "#9055A2", "#D499B9", "#E8C1C5"]
+  },
+  {
+    "name": "Coral Tide",
+    "colors": ["#FF6B6B", "#FFD93D", "#6BCB77", "#4D96FF", "#FFFFFF"]
+  },
+  {
+    "name": "Copper Grove",
+    "colors": ["#2C1810", "#533B2F", "#A97155", "#D7B89C", "#F1E3D3"]
+  },
+  {
+    "name": "Lunar Mist",
+    "colors": ["#ECECEC", "#C9C9C9", "#9BA4B4", "#52616B", "#1E2022"]
+  },
+  {
+    "name": "Citrus Bloom",
+    "colors": ["#FFBF81", "#FFD8A9", "#FFF6C3", "#C1FBA4", "#83C9F4"]
+  },
+  {
+    "name": "Peacock Reverie",
+    "colors": ["#0D324D", "#7F5A83", "#A188A6", "#D4BBDD", "#EAD7E7"]
+  },
+  {
+    "name": "Solar Flare",
+    "colors": ["#FF512F", "#F09819", "#FFD369", "#FFF7AE", "#FCF6BD"]
+  },
+  {
+    "name": "Starlit Frost",
+    "colors": ["#A7C5EB", "#C9E4CA", "#EEF6F8", "#F7F7F7", "#C7CEEA"]
+  },
+  {
+    "name": "Deep Amethyst",
+    "colors": ["#140F2D", "#382F63", "#645CBB", "#A084DC", "#E5CCFF"]
+  }
+]
