@@ -160,28 +160,48 @@ function drawCanvas(palette){
 }
 
 /* Generate Spark */
-function generateScene(){
-  const theme=v('theme'),emotion=v('emotion'),object=v('object'),fav=v('favorites'),style=v('style');
-  if(!theme&&!emotion&&!object&&!fav){toast('Enter at least one idea word.');return;}
-  const personality=randomChoice(personalities);
-  const favs=fav.split(',').map(f=>f.trim()).filter(f=>f);
-  const favWord=favs.length?randomChoice(favs):randomChoice(DEFAULT_DICT);
-  const obj=object||randomChoice(DEFAULT_DICT);
-  let line=`${personality.connector} a ${theme||randomChoice(DEFAULT_DICT)} ${randomChoice(personality.adjectives)} in ${emotion||"quiet wonder"}, where the ${obj} ${randomChoice(personality.verbs)} beneath ${favWord||"a drifting sky"}. Translate this into a ${randomChoice(mediums)}${style?(" rendered in "+style):""}`;
-  line=cleanSentence(line);
+function generateScene() {
+  const theme = v('theme'), emotion = v('emotion'), object = v('object'), fav = v('favorites'), style = v('style');
+  if (!theme && !emotion && !object && !fav) { toast('Enter at least one idea word.'); return; }
 
-  const palette=randomChoice(colorPalettes);
-  const card=document.createElement('div');card.className='card';
-  const h4=document.createElement('h4');h4.textContent='Creative Spark';
-  const p=document.createElement('p');p.textContent=line;
-  const bar=document.createElement('div');bar.className='color-bar';
-  palette.colors.forEach(c=>{const sw=document.createElement('div');sw.className='color-swatch';sw.style.background=c;bar.appendChild(sw);});
-  const cv=drawCanvas(palette);
-  card.append(h4,p,bar,cv);
+  const personality = randomChoice(personalities);
+  const favs = fav.split(',').map(f => f.trim()).filter(f => f);
+  const favWord = favs.length ? randomChoice(favs) : randomChoice(DEFAULT_DICT);
+  const obj = object || randomChoice(DEFAULT_DICT);
+
+  // Grammar-aware phrases
+  const article = /^[aeiou]/i.test(theme || '') ? 'an' : 'a';
+  const connector = randomChoice([
+    'under the quiet sky', 
+    'where silence hums softly', 
+    'beneath the open horizon', 
+    'while twilight listens', 
+    'as daylight drifts away'
+  ]);
+
+  // Choose correct pluralization
+  const plural = obj.endsWith('s');
+  const verb = plural ? randomChoice(['sway', 'glow', 'rest', 'linger']) : randomChoice(['sways', 'glows', 'rests', 'lingers']);
+
+  // Assemble poetic but logical line
+  let line = `${personality.connector} ${article} ${theme || randomChoice(DEFAULT_DICT)} ` +
+             `${randomChoice(personality.adjectives)} in ${emotion || "quiet wonder"}, ` +
+             `where the ${obj} ${verb} ${connector}. ` +
+             `Translate this feeling into ${randomChoice(mediums)}${style ? " rendered in " + style : ""}.`;
+
+  line = cleanSentence(line);
+
+  const palette = randomChoice(colorPalettes);
+  const card = document.createElement('div'); card.className = 'card';
+  const h4 = document.createElement('h4'); h4.textContent = 'Creative Spark';
+  const p = document.createElement('p'); p.textContent = line;
+  const bar = document.createElement('div'); bar.className = 'color-bar';
+  palette.colors.forEach(c => { const sw = document.createElement('div'); sw.className = 'color-swatch'; sw.style.background = c; bar.appendChild(sw); });
+  const cv = drawCanvas(palette);
+  card.append(h4, p, bar, cv);
   document.getElementById('results').replaceChildren(card);
-  document.getElementById('nextBtn').style.display='inline-block';
+  document.getElementById('nextBtn').style.display = 'inline-block';
 }
-
 /* Events */
 document.getElementById('beginBtn').onclick=()=>{document.getElementById('home').style.display='none';document.getElementById('generator').style.display='flex';};
 document.getElementById('generateBtn').onclick=()=>generateScene();
