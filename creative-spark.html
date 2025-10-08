@@ -132,9 +132,21 @@ function generateScene() {
              .replace(/\s{2,}/g," ").trim();
 
   // optional Aurora polish
-  if (AURORA && typeof AURORA.auroraRefineV8Complete === "function") {
-    text = AURORA.auroraRefineV8Complete(text,{tier:1,mood:"neutral"});
+  // --- Aurora Refinement with Grammar Pass ---
+if (AURORA && typeof AURORA.auroraRefineV8Complete === "function") {
+  // 1. Normalize emotions like "happy" → "happiness"
+  if (typeof AURORA.normalizeEmotion === "function") {
+    text = AURORA.normalizeEmotion(text);
   }
+
+  // 2. Core grammar and article correction
+  if (typeof AURORA.correctGrammar === "function") {
+    text = AURORA.correctGrammar(text);
+  }
+
+  // 3. Full poetic refinement
+  text = AURORA.auroraRefineV8Complete(text,{tier:1,mood:"neutral"});
+}
 
   // draw and display
   const palette = random([["#FF6E3A","#FFD1A4","#2C1B17"],["#0B132B","#3A506B","#6FFFE9"]]);
