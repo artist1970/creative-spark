@@ -133,7 +133,25 @@ function generateScene() {
 
   // optional Aurora polish
   // --- Aurora Refinement with Grammar Pass ---
-if (AURORA && typeof AURORA.auroraRefineV8Complete === "function") {
+  // --- Emotion Word Normalization (pre-Aurora) ---
+const emotionMap = {
+  happy: "happiness",
+  joyful: "joy",
+  calm: "calmness",
+  peaceful: "peace",
+  brave: "courage",
+  hopeful: "hope",
+  loving: "love",
+  sad: "sadness",
+  angry: "anger",
+  lonely: "solitude",
+  serene: "serenity",
+  nostalgic: "nostalgia"
+};
+for (const [k, v] of Object.entries(emotionMap)) {
+  const regex = new RegExp("\\b" + k + "\\b", "gi");
+  text = text.replace(regex, v);
+}if (AURORA && typeof AURORA.auroraRefineV8Complete === "function") {
   // 1. Normalize emotions like "happy" → "happiness"
   if (typeof AURORA.normalizeEmotion === "function") {
     text = AURORA.normalizeEmotion(text);
