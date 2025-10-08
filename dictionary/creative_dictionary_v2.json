@@ -1,18 +1,4 @@
 
-  "personalities": {
-    "poetic": [
-      "Imagine a {adj} {theme} filled with {emotion}, where the {object} {verb} beneath the open horizon.",
-      "A moment where {object} {verb} through a {adj} {theme}, carrying the essence of {emotion}."
-    ],
-    "descriptive": [
-      "Visualize a {theme} scene bathed in {emotion}. Place a {object} near the horizon and balance light and space.",
-      "Sketch a {adj} {theme} filled with depth. Let the {object} rest beneath soft tones of {emotion}."
-    ]
-  }
-}
-
-
-
 {
   "adjectives": ["gentle", "vivid", "dreamy", "serene", "bold", "whimsical", "quiet", "sparkling", "melancholy", "radiant",
     "luminous", "soft", "brilliant", "mystical", "peaceful", "restless", "ethereal", "rustic", "mellow", "shadowed",
