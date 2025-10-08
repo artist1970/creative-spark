@@ -101,6 +101,51 @@ async function loadExternalModules(){
 }
 window.addEventListener("DOMContentLoaded",loadExternalModules);
 
+  // ---------- Generator Logic (Improved Sentence Builder) ----------
+function generateScene() {
+  const theme = v('theme') || random(DICTIONARY?.themes || ["landscape"]);
+  const emotion = v('emotion') || random(DICTIONARY?.emotions || ["wonder"]);
+  const object = v('object') || random(DICTIONARY?.symbols || ["light"]);
+  const style = v('style') || "art";
+  const tone = random(["poetic","descriptive"]);
+
+  // choose pattern from dictionary
+  const patternSet = DICTIONARY?.personalities?.[tone];
+  const pattern = patternSet ? random(patternSet) :
+    "Imagine a {adj} {theme} filled with {emotion}, where the {object} {verb} beneath the sky.";
+
+  // pick words with meaning alignment
+  const adj = random(DICTIONARY?.adjectives || ["gentle","vivid","dreamy"]);
+  const verb = random(DICTIONARY?.verbs || ["sways","glows","rests"]);
+
+  // fill placeholders
+  let text = pattern
+    .replace(/{theme}/g, theme)
+    .replace(/{emotion}/g, emotion)
+    .replace(/{object}/g, object)
+    .replace(/{verb}/g, verb)
+    .replace(/{adj}/g, adj);
+
+  // smooth basic grammar before Aurora
+  text = text.replace(/\b(a|an) ([aeiou])/gi,"an $2")
+             .replace(/\b(a|an) ([^aeiou])/gi,"a $2")
+             .replace(/\s{2,}/g," ").trim();
+
+  // optional Aurora polish
+  if (AURORA && typeof AURORA.auroraRefineV8Complete === "function") {
+    text = AURORA.auroraRefineV8Complete(text,{tier:1,mood:"neutral"});
+  }
+
+  // draw and display
+  const palette = random([["#FF6E3A","#FFD1A4","#2C1B17"],["#0B132B","#3A506B","#6FFFE9"]]);
+  const cv = drawCanvas(palette,"day");
+  const card = document.createElement("div");
+  card.className = "card";
+  card.innerHTML = `<h4>Creative Spark</h4><p>${text}</p>`;
+  card.appendChild(cv);
+  document.getElementById("results").replaceChildren(card);
+  toast("✨ Spark generated");
+}
 // --- Generate Scene (base logic) ---
 function generateScene(){
   const theme=v('theme')||"landscape",emotion=v('emotion')||"peace",object=v('object')||"symbol";
