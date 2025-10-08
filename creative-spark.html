@@ -102,21 +102,22 @@ async function loadExternalModules(){
 window.addEventListener("DOMContentLoaded",loadExternalModules);
 
   // ---------- Generator Logic (Improved Sentence Builder) ----------
+// ---------- Generator Logic (Improved Sentence Builder + Display Integration) ----------
 function generateScene() {
   const theme = v('theme') || random(DICTIONARY?.themes || ["landscape"]);
   const emotion = v('emotion') || random(DICTIONARY?.emotions || ["wonder"]);
   const object = v('object') || random(DICTIONARY?.symbols || ["light"]);
   const style = v('style') || "art";
-  const tone = random(["poetic","descriptive"]);
+  const tone = random(["poetic", "descriptive"]);
 
-  // choose pattern from dictionary
+  // choose a pattern template
   const patternSet = DICTIONARY?.personalities?.[tone];
-  const pattern = patternSet ? random(patternSet) :
-    "Imagine a {adj} {theme} filled with {emotion}, where the {object} {verb} beneath the sky.";
+  const pattern = patternSet
+    ? random(patternSet)
+    : "Imagine a {adj} {theme} filled with {emotion}, where the {object} {verb} beneath the sky.";
 
-  // pick words with meaning alignment
-  const adj = random(DICTIONARY?.adjectives || ["gentle","vivid","dreamy"]);
-  const verb = random(DICTIONARY?.verbs || ["sways","glows","rests"]);
+  const adj = random(DICTIONARY?.adjectives || ["gentle", "vivid", "dreamy"]);
+  const verb = random(DICTIONARY?.verbs || ["sways", "glows", "rests"]);
 
   // fill placeholders
   let text = pattern
@@ -126,55 +127,37 @@ function generateScene() {
     .replace(/{verb}/g, verb)
     .replace(/{adj}/g, adj);
 
-  // smooth basic grammar before Aurora
-  text = text.replace(/\b(a|an) ([aeiou])/gi,"an $2")
-             .replace(/\b(a|an) ([^aeiou])/gi,"a $2")
-             .replace(/\s{2,}/g," ").trim();
+  // clean basic grammar
+  text = text
+    .replace(/\b(a|an) ([aeiou])/gi, "an $2")
+    .replace(/\b(a|an) ([^aeiou])/gi, "a $2")
+    .replace(/\s{2,}/g, " ")
+    .trim();
 
   // optional Aurora polish
-  // --- Aurora Refinement with Grammar Pass ---
-  // --- Emotion Word Normalization (pre-Aurora) ---
-const emotionMap = {
-  happy: "happiness",
-  joyful: "joy",
-  calm: "calmness",
-  peaceful: "peace",
-  brave: "courage",
-  hopeful: "hope",
-  loving: "love",
-  sad: "sadness",
-  angry: "anger",
-  lonely: "solitude",
-  serene: "serenity",
-  nostalgic: "nostalgia"
-};
-for (const [k, v] of Object.entries(emotionMap)) {
-  const regex = new RegExp("\\b" + k + "\\b", "gi");
-  text = text.replace(regex, v);
-}if (AURORA && typeof AURORA.auroraRefineV8Complete === "function") {
-  // 1. Normalize emotions like "happy" → "happiness"
-  if (typeof AURORA.normalizeEmotion === "function") {
-    text = AURORA.normalizeEmotion(text);
+  if (window.AURORA && typeof AURORA.auroraRefineV8Complete === "function") {
+    text = AURORA.auroraRefineV8Complete(text, { tier: 1, mood: "neutral" });
   }
 
-  // 2. Core grammar and article correction
-  if (typeof AURORA.correctGrammar === "function") {
-    text = AURORA.correctGrammar(text);
-  }
-
-  // 3. Full poetic refinement
-  text = AURORA.auroraRefineV8Complete(text,{tier:1,mood:"neutral"});
+  return text;
 }
 
-  // draw and display
-  const palette = random([["#FF6E3A","#FFD1A4","#2C1B17"],["#0B132B","#3A506B","#6FFFE9"]]);
-  const cv = drawCanvas(palette,"day");
-  const card = document.createElement("div");
-  card.className = "card";
-  card.innerHTML = `<h4>Creative Spark</h4><p>${text}</p>`;
-  card.appendChild(cv);
-  document.getElementById("results").replaceChildren(card);
-  toast("✨ Spark generated");
+// Helper functions
+function random(arr) { return arr[Math.floor(Math.random() * arr.length)]; }
+function v(id) { return document.getElementById(id)?.value?.trim(); }
+
+// integrate scene generation into your existing generateSpark button
+function generateSpark() {
+  const line = generateScene();
+
+  const palette = palettes[Math.floor(Math.random() * palettes.length)];
+  const art = drawScene(palette);
+  const res = document.getElementById("result");
+  res.innerHTML = `<strong>Creative Spark</strong><br>${line}`;
+  res.appendChild(art);
+
+  localStorage.setItem("lastSpark", res.innerHTML);
+  showToast("✨ Spark Generated via Aurora v8");
 }
 // --- Generate Scene (base logic) ---
 function generateScene(){
