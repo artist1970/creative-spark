@@ -162,9 +162,18 @@ function drawCanvas(palette){
 // ======= Load External Dictionary + Aurora =======
 let DICTIONARY=null;let AURORA=null;
 Promise.all([
-  fetch("dictionary/creative_dictionary_v2.json").then(r=>r.json()).then(d=>{DICTIONARY=d;}),
-  fetch("aurora/aurora_v8.js").then(r=>r.text()).then(code=>{AURORA={};eval(code);})
-]).then(()=>console.log("🌸 Dictionary & Aurora Loaded")).catch(e=>console.error(e));
+  fetch("Dictionary/creative_dictionary_v2.json").then(r=>{
+    if(!r.ok) throw new Error("Dictionary fetch error: "+r.status);
+    return r.json();
+  }).then(d=>{DICTIONARY=d;}),
+  fetch("aurora_v8.1.js").then(r=>{
+    if(!r.ok) throw new Error("Aurora fetch error: "+r.status);
+    return r.text();
+  }).then(code=>{AURORA={};eval(code);})
+]).then(()=>console.log("🌸 Dictionary & Aurora Loaded")).catch(e=>{
+  toast("Failed to load resources: "+e.message);
+  console.error(e);
+});
 
 // ======= Generator Logic =======
 function v(id){return document.getElementById(id).value.trim();}
@@ -188,19 +197,10 @@ function generateScene(){
     .replaceAll("{adj}",random(DICTIONARY.adjectives))
     .replaceAll("{style}",style||"realistic");
 
-  // emotion normalization before Aurora
-  const emotionMap={happy:"happiness",joyful:"joy",calm:"calmness",peaceful:"peace",
-    brave:"courage",hopeful:"hope",loving:"love",sad:"sadness",angry:"anger",lonely:"solitude",serene:"serenity"};
-  for(const[k,v]of Object.entries(emotionMap)){
-    text=text.replace(new RegExp("\\b"+k+"\\b","gi"),v);
-  }
-
   // Aurora Refinement
   try{
     if(AURORA && typeof auroraRefineV8Complete==="function"){
-      text=normalizeEmotion?normalizeEmotion(text):text;
-      text=correctGrammar?correctGrammar(text):text;
-      text=auroraRefineV8Complete(text,{tier:1,mood:"neutral"});
+      text=auroraRefineV8Complete(text,{tier:complexity-1,mood:emotion});
     }
   }catch(e){console.warn("Aurora not applied:",e);}
 
