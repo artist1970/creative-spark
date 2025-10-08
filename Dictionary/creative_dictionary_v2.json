@@ -1,6 +1,6 @@
 
 {
-  "adjectives": ["gentle", "vivid", "dreamy", "serene", "bold", "whimsical", "quiet", "sparkling", "melancholy", "radiant",
+  "adjectives": [ "gentle", "vivid", "dreamy", "serene", "bold", "whimsical", "quiet", "sparkling", "melancholy", "radiant",
     "luminous", "soft", "brilliant", "mystical", "peaceful", "restless", "ethereal", "rustic", "mellow", "shadowed",
     "vibrant", "misty", "playful", "delicate", "transcendent", "ancient", "fierce", "tender", "majestic", "fragile",
     "glimmering", "solemn", "golden", "pale", "sacred", "ornate", "distant", "subtle", "raw", "enchanted",
@@ -16,12 +16,12 @@
     "blooming", "emergent", "marbled", "ebony", "cerulean", "rosy", "ochre", "verdigris", "mystified", "awakened",
     "burnished", "gleaming", "somber", "transient", "refracted", "fragmented", "rippling", "lilting", "ancient-hearted", "newborn"
   ],
-  "verbs": ["sways", "glows", "rests", "whispers", "shines", "drifts", "dances", "lingers", "blooms", "wanders",
+
+  "verbs": [ "sways", "glows", "rests", "whispers", "shines", "drifts", "dances", "lingers", "blooms", "wanders",
     "gleams", "rises", "falls", "echoes", "emerges", "fades", "breathes", "shimmers", "flows", "glimmers",
     "twists", "unfolds", "stirs", "radiates", "trembles", "glides", "awakens", "settles", "bends", "burns",
     "reflects", "ripples", "spreads", "sparkles", "descends", "hovers", "melts", "returns", "deepens", "surges",
     "erupts", "illuminates", "fractures", "connects", "surrounds", "gathers", "absorbs", "dissolves", "carries", "sleeps",
-    "echoes", "drips", "awakens", "flutters", "collides", "awakens", "embraces", "wanders", "tangles", "beckons",
     "murmurs", "quivers", "wavers", "tumbles", "spirals", "calls", "wraps", "shivers", "rests", "unites",
     "folds", "erupts", "flows", "gleams", "beckons", "shifts", "oscillates", "bursts", "wakes", "sinks",
     "reflects", "absorbs", "yearns", "pierces", "wanders", "rests", "returns", "blossoms", "unites", "collapses",
@@ -32,7 +32,8 @@
     "awakens", "sings", "resonates", "shatters", "fades", "arises", "flows", "unravels", "weaves", "listens",
     "settles", "thrums", "stirs", "sways", "emerges", "unfolds", "rises", "reflects", "grows", "persists"
   ],
-  "emotions": ["hope", "joy", "longing", "calm", "love", "melancholy", "awe", "peace", "wonder", "nostalgia",
+
+  "emotions": [ "hope", "joy", "longing", "calm", "love", "melancholy", "awe", "peace", "wonder", "nostalgia",
     "curiosity", "gratitude", "freedom", "yearning", "contentment", "mystery", "solitude", "tension", "harmony", "compassion",
     "clarity", "forgiveness", "reverence", "serendipity", "desire", "trust", "grace", "anticipation", "surrender", "faith",
     "patience", "ecstasy", "sadness", "triumph", "fear", "acceptance", "renewal", "sorrow", "amazement", "euphoria",
@@ -49,6 +50,7 @@
     "transcendence", "awakening", "repose", "illumination", "forgiveness", "healing", "serenity", "trust", "hopefulness", "belonging",
     "soft joy", "deep wonder", "calm anticipation", "quiet courage", "radiant peace", "melancholy beauty", "grateful longing", "spiritual stillness", "gentle faith", "inspired awe"
   ],
+
   "mediums": ["oil painting", "acrylic painting", "watercolor", "tempera painting", "encaustic painting", "fresco", "gouache", "ink drawing", "charcoal sketch", "graphite sketch",
   "pastel drawing", "colored pencil drawing", "chalk art", "calligraphy", "miniature painting", "stencil art", "screen print", "lithography", "linocut", "etching", "monotype",
   "woodcut", "stone carving", "bronze casting", "clay sculpture", "ceramic sculpture", "pottery wheel-throwing", "papier-mâché", "origami", "paper craft", "quilling", "bookbinding",
@@ -75,7 +77,7 @@
   "conceptual art", "algorithmic music", "bio-art", "neuro-art", "chemical art", "food art", "liquid sculpture", "magnetic art", "light sculpture", "motion sculpture"
 ],
 
- "themes": ["landscape", "sunset", "forest", "western", "seascape", "garden", "dreamscape", "mountain range", "riverbank", "valley",
+  "themes": ["landscape", "sunset", "forest", "western", "seascape", "garden", "dreamscape", "mountain range", "riverbank", "valley",
   "urban night", "desert horizon", "moonlit shore", "ancient ruins", "cloud kingdom", "autumn path", "snow field", "harbor town", "hidden meadow", "lost temple",
   "ocean floor", "enchanted wood", "starlit desert", "forgotten city", "northern lights", "sacred grove", "crystal cavern", "frozen waterfall", "floating island", "mirrored lake",
   "sun-drenched alley", "temple gate", "rain garden", "shadowed canyon", "silent forest", "celestial plain", "flooded ruins", "wind valley", "lunar coast", "golden dunes",
@@ -89,7 +91,8 @@
   "luminous bay", "sapphire cavern", "emerald isle", "phantom forest", "celestial canyon", "mirror maze", "shattered temple", "ancient coliseum", "blossoming orchard"
 ],
 
- "symbols": ["rose", "lotus", "sunflower", "daisy", "lily", "oak tree", "willow", "pine tree", "mountain", "river", "ocean", "lake", "waterfall",
+
+  "symbols": ["rose", "lotus", "sunflower", "daisy", "lily", "oak tree", "willow", "pine tree", "mountain", "river", "ocean", "lake", "waterfall",
   "island", "isle", "cloud", "moon", "crescent moon", "full moon", "new moon", "sun", "star", "shooting star", "comet", "meteor",
   "rainbow", "fog", "mist", "dew", "snowflake", "ice crystal", "hail", "storm cloud", "lightning bolt", "volcano", "sand dune",
   "cave", "stalactite", "stalagmite", "canyon", "valley", "desert", "forest", "jungle", "swamp", "marsh", "grove", "glade", "meadow",
@@ -126,7 +129,7 @@
   "whispering wind", "frozen waterfall", "wandering flame", "spectral orb", "celestial crown", "ancient rune stone"
 ],
 
- "personalities": {
+  "personalities": {
     "poetic": [
       "Imagine a {adj} {theme} filled with {emotion}, where the {object} {verb} beneath the open horizon.",
       "A moment where {object} {verb} through a {adj} {theme}, carrying the essence of {emotion}.",
@@ -154,10 +157,7 @@
       "A {theme} of {adj} whispers, where {object} {verb} carrying {emotion} through the haze.",
       "Amidst the {adj} {theme}, the {object} {verb}, and {emotion} flows like hidden rivers."
   ],
-
-   
-   "personalities": {
-  "descriptive": [
+    "descriptive": [
       "Visualize a {theme} scene bathed in {emotion}. Place a {object} near the horizon and balance light and space.",
       "Sketch a {adj} {theme} filled with depth. Let the {object} rest beneath soft tones of {emotion}.",
       "Compose the {theme} with attention to {emotion}, placing the {object} as your focal point.",
@@ -340,6 +340,7 @@
       "Plan {theme} shapes in {style} with {adj} dynamics, letting {object} convey {emotion} naturally.",
       "Design {theme} space in {style} in {adj} layers, where {object} anchors {emotion}.",
       "Construct {theme} lines and planes in {style} with {adj} balance, guiding {object} and {emotion}."
-  ],
-  
+    ]
+  }
 }
+
